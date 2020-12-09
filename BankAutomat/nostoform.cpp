@@ -5,7 +5,9 @@
 #include <QNetworkRequest>
 
 
-QString AccountID, nostosumma, Balance;
+QString AccountID,
+       nostosumma,
+          Balance;
 
 NostoForm::NostoForm(QWidget *parent) :
     QWidget(parent),
@@ -70,20 +72,28 @@ void NostoForm::on_btn100euroa_clicked()
 
 void NostoForm::on_btnVahvista_clicked()
 {
+    //Check QNetwork reply to balance & compare if can withdraw
 
-    if(nostosumma != NULL) 
+if(nostosumma != NULL)
     {
     ui->labelNostoStatus->setText(nostosumma+" €");
     ui->btnStop->setText("Sulje");
     }
-    else {                                                      // Vahvista clicked with no withdraw sum 
+
+else {                                                      // Vahvista clicked with no withdraw sum
     ui->labelNostoStatus->setText("Valitse Nostosumma ensin !");
     }
-    if(nostosumma != NULL)
+
+if(Balance != nostosumma) //switch here
     {
-        ui->labelNostoStatus->setText("Nosto Tapahtuma Onnistui! ");
+        ui->labelNostoStatus->setText("Kate ei riitä, yritä uudelleen!");
+
+
     }
+  //  ui->labelNostoStatus->setText("Nosto Tapahtuma Onnistui! ");
+
 }
+
 void NostoForm::on_btnStop_clicked()                           //close Nosto + Open Menu 
 {
     this->close();

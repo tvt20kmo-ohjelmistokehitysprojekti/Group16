@@ -78,7 +78,7 @@ public:
         label_2->setFont(font);
         btnCloseMenuPage = new QPushButton(MenuPage);
         btnCloseMenuPage->setObjectName(QString::fromUtf8("btnCloseMenuPage"));
-        btnCloseMenuPage->setGeometry(QRect(200, 373, 192, 41));
+        btnCloseMenuPage->setGeometry(QRect(200, 383, 192, 31));
 
         retranslateUi(MenuPage);
 

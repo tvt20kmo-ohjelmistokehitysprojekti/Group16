@@ -18,6 +18,7 @@ SOURCES += \
     saldoform.cpp \
     signoutform.cpp \
     siirtoform.cpp \
+    talletusform.cpp \
     tapahtumatform.cpp
 
 HEADERS += \
@@ -28,6 +29,7 @@ HEADERS += \
     saldoform.h \
     signoutform.h \
     siirtoform.h \
+    talletusform.h \
     tapahtumatform.h
 
 FORMS += \
@@ -38,6 +40,7 @@ FORMS += \
     saldoform.ui \
     signoutform.ui \
     siirtoform.ui \
+    talletusform.ui \
     tapahtumatform.ui
 
 # Default rules for deployment.

@@ -24,4 +24,5 @@ private:
     Ui::DebitorCredit *ui;
 };
 
+
 #endif // DEBITORCREDIT_H

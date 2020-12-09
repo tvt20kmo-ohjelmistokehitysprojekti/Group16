@@ -22,7 +22,7 @@
      <height>241</height>
     </rect>
    </property>
-   <layout class="QGridLayout" name="gridLayout" columnstretch="0,0,0">
+   <layout class="QGridLayout" name="gridLayout" columnstretch="0,0">
     <property name="sizeConstraint">
      <enum>QLayout::SetMinAndMaxSize</enum>
     </property>
@@ -95,9 +95,9 @@
    <property name="geometry">
     <rect>
      <x>200</x>
-     <y>373</y>
+     <y>383</y>
      <width>192</width>
-     <height>41</height>
+     <height>31</height>
     </rect>
    </property>
    <property name="text">

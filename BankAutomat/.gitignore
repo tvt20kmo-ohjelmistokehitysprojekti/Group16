@@ -55,7 +55,7 @@ Thumbs.db
    build-BankAutomat-Desktop_Qt_5_15_1_clang_64bit-Debug/moc_menuform.cpp
    build-BankAutomat-Desktop_Qt_5_15_1_clang_64bit-Debug/moc_menuform.o
     build-BankAutomat-Desktop_Qt_5_15_1_clang_64bit-Debug/.qmake.stash
-	.:   build-BankAutomat-Desktop_Qt_5_15_1_clang_64bit-Debug/BankAutomat.app/Contents/Info.plist
+	.     build-BankAutomat-Desktop_Qt_5_15_1_clang_64bit-Debug/BankAutomat.app/Contents/Info.plist
 	    build-BankAutomat-Desktop_Qt_5_15_1_clang_64bit-Debug/BankAutomat.app/Contents/MacOS/BankAutomat
 	    build-BankAutomat-Desktop_Qt_5_15_1_clang_64bit-Debug/BankAutomat.app/Contents/PkgInfo
 	    build-BankAutomat-Desktop_Qt_5_15_1_clang_64bit-Debug/BankAutomat.app/Contents/Resources/empty.lproj
@@ -192,6 +192,22 @@ Thumbs.db
 	     build-ci_client-Desktop_Qt_5_15_1_clang_64bit-Debug/moc_mainwindow.o
 	     build-ci_client-Desktop_Qt_5_15_1_clang_64bit-Debug/moc_predefs.h
 	     build-ci_client-Desktop_Qt_5_15_1_clang_64bit-Debug/ui_mainwindow.h
+		  build-BankAutomat-Desktop_Qt_5_15_1_clang_64bit-Debug/BankAutomat.app/Contents/MacOS/BankAutomat
+	       build-BankAutomat-Desktop_Qt_5_15_1_clang_64bit-Debug/Makefile
+	       build-BankAutomat-Desktop_Qt_5_15_1_clang_64bit-Debug/debitorcredit.o
+	       build-BankAutomat-Desktop_Qt_5_15_1_clang_64bit-Debug/menupage.o
+	       build-BankAutomat-Desktop_Qt_5_15_1_clang_64bit-Debug/moc_menupage.cpp
+	       build-BankAutomat-Desktop_Qt_5_15_1_clang_64bit-Debug/moc_menupage.o
+	    build-BankAutomat-Desktop_Qt_5_15_1_clang_64bit-Debug/nostoform.o
+	    build-BankAutomat-Desktop_Qt_5_15_1_clang_64bit-Debug/ui_menupage.h
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	build-BankAutomat-Desktop_Qt_5_15_1_clang_64bit-Debug/moc_talletusform.cpp
+	build-BankAutomat-Desktop_Qt_5_15_1_clang_64bit-Debug/moc_talletusform.o
+	build-BankAutomat-Desktop_Qt_5_15_1_clang_64bit-Debug/talletusform.o
+	build-BankAutomat-Desktop_Qt_5_15_1_clang_64bit-Debug/ui_talletusform.h
+
 
 
 

@@ -2,6 +2,10 @@
 #include "saldoform.h"
 #include "nostoform.h"
 #include "ui_menupage.h"
+#include "tapahtumatform.h"
+#include "talletusform.h"
+
+#include <signoutform.h>
 
 MenuPage::MenuPage(QWidget *parent) :
     QWidget(parent),
@@ -9,7 +13,14 @@ MenuPage::MenuPage(QWidget *parent) :
 {
     ui->setupUi(this);
 
+
 }
+MenuPage::~MenuPage()
+{
+        delete ui;
+}
+
+
 
 
 
@@ -28,9 +39,30 @@ void MenuPage::on_btnOpenSaldo_clicked()
     SaldoForm *sfm= new SaldoForm();
     sfm->show();
 
+    this->close();
+
 }
 
 void MenuPage::on_btnCloseMenuPage_clicked()
 {
-    this ->close();
+    SignOutForm *out= new SignOutForm();
+    out->show();
+
+    this->close();
+}
+
+void MenuPage::on_btnOpenTapahtumat_clicked()
+{
+    TapahtumatForm *tff= new TapahtumatForm();
+    tff->show();
+
+    this->close();
+}
+
+void MenuPage::on_btnOpenTalletus_clicked()
+{
+   TalletusForm *ttt= new TalletusForm();
+   ttt->show();
+
+   this->close();
 }

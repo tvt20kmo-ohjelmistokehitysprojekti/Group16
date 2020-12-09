@@ -60,6 +60,7 @@ SOURCES       = ../BankAutomat/debitorcredit.cpp \
 		../BankAutomat/saldoform.cpp \
 		../BankAutomat/signoutform.cpp \
 		../BankAutomat/siirtoform.cpp \
+		../BankAutomat/talletusform.cpp \
 		../BankAutomat/tapahtumatform.cpp moc_debitorcredit.cpp \
 		moc_mainwindow.cpp \
 		moc_menupage.cpp \
@@ -67,6 +68,7 @@ SOURCES       = ../BankAutomat/debitorcredit.cpp \
 		moc_saldoform.cpp \
 		moc_signoutform.cpp \
 		moc_siirtoform.cpp \
+		moc_talletusform.cpp \
 		moc_tapahtumatform.cpp
 OBJECTS       = debitorcredit.o \
 		main.o \
@@ -76,6 +78,7 @@ OBJECTS       = debitorcredit.o \
 		saldoform.o \
 		signoutform.o \
 		siirtoform.o \
+		talletusform.o \
 		tapahtumatform.o \
 		moc_debitorcredit.o \
 		moc_mainwindow.o \
@@ -84,6 +87,7 @@ OBJECTS       = debitorcredit.o \
 		moc_saldoform.o \
 		moc_signoutform.o \
 		moc_siirtoform.o \
+		moc_talletusform.o \
 		moc_tapahtumatform.o
 DIST          = /Users/thaheralamir/Qt/5.15.1/clang_64/mkspecs/features/spec_pre.prf \
 		/Users/thaheralamir/Qt/5.15.1/clang_64/mkspecs/qdevice.pri \
@@ -269,6 +273,7 @@ DIST          = /Users/thaheralamir/Qt/5.15.1/clang_64/mkspecs/features/spec_pre
 		../BankAutomat/saldoform.h \
 		../BankAutomat/signoutform.h \
 		../BankAutomat/siirtoform.h \
+		../BankAutomat/talletusform.h \
 		../BankAutomat/tapahtumatform.h ../BankAutomat/debitorcredit.cpp \
 		../BankAutomat/main.cpp \
 		../BankAutomat/mainwindow.cpp \
@@ -277,6 +282,7 @@ DIST          = /Users/thaheralamir/Qt/5.15.1/clang_64/mkspecs/features/spec_pre
 		../BankAutomat/saldoform.cpp \
 		../BankAutomat/signoutform.cpp \
 		../BankAutomat/siirtoform.cpp \
+		../BankAutomat/talletusform.cpp \
 		../BankAutomat/tapahtumatform.cpp
 QMAKE_TARGET  = BankAutomat
 DESTDIR       = 
@@ -296,7 +302,7 @@ include /Users/thaheralamir/Qt/5.15.1/clang_64/mkspecs/features/mac/sdk.mk
 first: all
 ####### Build rules
 
-BankAutomat.app/Contents/MacOS/BankAutomat: ui_debitorcredit.h ui_mainwindow.h ui_menupage.h ui_nostoform.h ui_saldoform.h ui_signoutform.h ui_siirtoform.h ui_tapahtumatform.h $(OBJECTS)  
+BankAutomat.app/Contents/MacOS/BankAutomat: ui_debitorcredit.h ui_mainwindow.h ui_menupage.h ui_nostoform.h ui_saldoform.h ui_signoutform.h ui_siirtoform.h ui_talletusform.h ui_tapahtumatform.h $(OBJECTS)  
 	@test -d BankAutomat.app/Contents/MacOS/ || mkdir -p BankAutomat.app/Contents/MacOS/
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
@@ -695,9 +701,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /Users/thaheralamir/Qt/5.15.1/clang_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../BankAutomat/debitorcredit.h ../BankAutomat/mainwindow.h ../BankAutomat/menupage.h ../BankAutomat/nostoform.h ../BankAutomat/saldoform.h ../BankAutomat/signoutform.h ../BankAutomat/siirtoform.h ../BankAutomat/tapahtumatform.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../BankAutomat/debitorcredit.cpp ../BankAutomat/main.cpp ../BankAutomat/mainwindow.cpp ../BankAutomat/menupage.cpp ../BankAutomat/nostoform.cpp ../BankAutomat/saldoform.cpp ../BankAutomat/signoutform.cpp ../BankAutomat/siirtoform.cpp ../BankAutomat/tapahtumatform.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../BankAutomat/debitorcredit.ui ../BankAutomat/mainwindow.ui ../BankAutomat/menupage.ui ../BankAutomat/nostoform.ui ../BankAutomat/saldoform.ui ../BankAutomat/signoutform.ui ../BankAutomat/siirtoform.ui ../BankAutomat/tapahtumatform.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../BankAutomat/debitorcredit.h ../BankAutomat/mainwindow.h ../BankAutomat/menupage.h ../BankAutomat/nostoform.h ../BankAutomat/saldoform.h ../BankAutomat/signoutform.h ../BankAutomat/siirtoform.h ../BankAutomat/talletusform.h ../BankAutomat/tapahtumatform.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../BankAutomat/debitorcredit.cpp ../BankAutomat/main.cpp ../BankAutomat/mainwindow.cpp ../BankAutomat/menupage.cpp ../BankAutomat/nostoform.cpp ../BankAutomat/saldoform.cpp ../BankAutomat/signoutform.cpp ../BankAutomat/siirtoform.cpp ../BankAutomat/talletusform.cpp ../BankAutomat/tapahtumatform.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../BankAutomat/debitorcredit.ui ../BankAutomat/mainwindow.ui ../BankAutomat/menupage.ui ../BankAutomat/nostoform.ui ../BankAutomat/saldoform.ui ../BankAutomat/signoutform.ui ../BankAutomat/siirtoform.ui ../BankAutomat/talletusform.ui ../BankAutomat/tapahtumatform.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -732,9 +738,9 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /Users/thaheralamir/Qt/5.15.1/clang_64/mkspecs/features/data/dummy.cpp
 	/Library/Developer/CommandLineTools/usr/bin/clang++ -pipe -stdlib=libc++ -g -std=gnu++11 $(EXPORT_ARCH_ARGS) -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk -mmacosx-version-min=10.13 -Wall -Wextra -dM -E -o moc_predefs.h /Users/thaheralamir/Qt/5.15.1/clang_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_debitorcredit.cpp moc_mainwindow.cpp moc_menupage.cpp moc_nostoform.cpp moc_saldoform.cpp moc_signoutform.cpp moc_siirtoform.cpp moc_tapahtumatform.cpp
+compiler_moc_header_make_all: moc_debitorcredit.cpp moc_mainwindow.cpp moc_menupage.cpp moc_nostoform.cpp moc_saldoform.cpp moc_signoutform.cpp moc_siirtoform.cpp moc_talletusform.cpp moc_tapahtumatform.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_debitorcredit.cpp moc_mainwindow.cpp moc_menupage.cpp moc_nostoform.cpp moc_saldoform.cpp moc_signoutform.cpp moc_siirtoform.cpp moc_tapahtumatform.cpp
+	-$(DEL_FILE) moc_debitorcredit.cpp moc_mainwindow.cpp moc_menupage.cpp moc_nostoform.cpp moc_saldoform.cpp moc_signoutform.cpp moc_siirtoform.cpp moc_talletusform.cpp moc_tapahtumatform.cpp
 moc_debitorcredit.cpp: ../BankAutomat/debitorcredit.h \
 		/Users/thaheralamir/Qt/5.15.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		/Users/thaheralamir/Qt/5.15.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
@@ -784,6 +790,13 @@ moc_siirtoform.cpp: ../BankAutomat/siirtoform.h \
 		/Users/thaheralamir/Qt/5.15.1/clang_64/bin/moc
 	/Users/thaheralamir/Qt/5.15.1/clang_64/bin/moc $(DEFINES) --include /Users/thaheralamir/.bitnami/stackman/machines/xampp/volumes/root/htdocs/dashboard/Group16/build-BankAutomat-Desktop_Qt_5_15_1_clang_64bit-Debug/moc_predefs.h -I/Users/thaheralamir/Qt/5.15.1/clang_64/mkspecs/macx-clang -I/Users/thaheralamir/.bitnami/stackman/machines/xampp/volumes/root/htdocs/dashboard/Group16/BankAutomat -I/Users/thaheralamir/Qt/5.15.1/clang_64/lib/QtWidgets.framework/Headers -I/Users/thaheralamir/Qt/5.15.1/clang_64/lib/QtGui.framework/Headers -I/Users/thaheralamir/Qt/5.15.1/clang_64/lib/QtNetwork.framework/Headers -I/Users/thaheralamir/Qt/5.15.1/clang_64/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/thaheralamir/Qt/5.15.1/clang_64/lib ../BankAutomat/siirtoform.h -o moc_siirtoform.cpp
 
+moc_talletusform.cpp: ../BankAutomat/talletusform.h \
+		/Users/thaheralamir/Qt/5.15.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		/Users/thaheralamir/Qt/5.15.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		moc_predefs.h \
+		/Users/thaheralamir/Qt/5.15.1/clang_64/bin/moc
+	/Users/thaheralamir/Qt/5.15.1/clang_64/bin/moc $(DEFINES) --include /Users/thaheralamir/.bitnami/stackman/machines/xampp/volumes/root/htdocs/dashboard/Group16/build-BankAutomat-Desktop_Qt_5_15_1_clang_64bit-Debug/moc_predefs.h -I/Users/thaheralamir/Qt/5.15.1/clang_64/mkspecs/macx-clang -I/Users/thaheralamir/.bitnami/stackman/machines/xampp/volumes/root/htdocs/dashboard/Group16/BankAutomat -I/Users/thaheralamir/Qt/5.15.1/clang_64/lib/QtWidgets.framework/Headers -I/Users/thaheralamir/Qt/5.15.1/clang_64/lib/QtGui.framework/Headers -I/Users/thaheralamir/Qt/5.15.1/clang_64/lib/QtNetwork.framework/Headers -I/Users/thaheralamir/Qt/5.15.1/clang_64/lib/QtCore.framework/Headers -I. -I/Library/Developer/CommandLineTools/usr/include/c++/v1 -I/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include -I/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include -I/Library/Developer/CommandLineTools/usr/include -F/Users/thaheralamir/Qt/5.15.1/clang_64/lib ../BankAutomat/talletusform.h -o moc_talletusform.cpp
+
 moc_tapahtumatform.cpp: ../BankAutomat/tapahtumatform.h \
 		/Users/thaheralamir/Qt/5.15.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		/Users/thaheralamir/Qt/5.15.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
@@ -795,9 +808,9 @@ compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_debitorcredit.h ui_mainwindow.h ui_menupage.h ui_nostoform.h ui_saldoform.h ui_signoutform.h ui_siirtoform.h ui_tapahtumatform.h
+compiler_uic_make_all: ui_debitorcredit.h ui_mainwindow.h ui_menupage.h ui_nostoform.h ui_saldoform.h ui_signoutform.h ui_siirtoform.h ui_talletusform.h ui_tapahtumatform.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_debitorcredit.h ui_mainwindow.h ui_menupage.h ui_nostoform.h ui_saldoform.h ui_signoutform.h ui_siirtoform.h ui_tapahtumatform.h
+	-$(DEL_FILE) ui_debitorcredit.h ui_mainwindow.h ui_menupage.h ui_nostoform.h ui_saldoform.h ui_signoutform.h ui_siirtoform.h ui_talletusform.h ui_tapahtumatform.h
 ui_debitorcredit.h: ../BankAutomat/debitorcredit.ui \
 		/Users/thaheralamir/Qt/5.15.1/clang_64/bin/uic
 	/Users/thaheralamir/Qt/5.15.1/clang_64/bin/uic ../BankAutomat/debitorcredit.ui -o ui_debitorcredit.h
@@ -826,6 +839,10 @@ ui_siirtoform.h: ../BankAutomat/siirtoform.ui \
 		/Users/thaheralamir/Qt/5.15.1/clang_64/bin/uic
 	/Users/thaheralamir/Qt/5.15.1/clang_64/bin/uic ../BankAutomat/siirtoform.ui -o ui_siirtoform.h
 
+ui_talletusform.h: ../BankAutomat/talletusform.ui \
+		/Users/thaheralamir/Qt/5.15.1/clang_64/bin/uic
+	/Users/thaheralamir/Qt/5.15.1/clang_64/bin/uic ../BankAutomat/talletusform.ui -o ui_talletusform.h
+
 ui_tapahtumatform.h: ../BankAutomat/tapahtumatform.ui \
 		/Users/thaheralamir/Qt/5.15.1/clang_64/bin/uic
 	/Users/thaheralamir/Qt/5.15.1/clang_64/bin/uic ../BankAutomat/tapahtumatform.ui -o ui_tapahtumatform.h
@@ -846,7 +863,7 @@ debitorcredit.o: ../BankAutomat/debitorcredit.cpp ../BankAutomat/debitorcredit.h
 		/Users/thaheralamir/Qt/5.15.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		/Users/thaheralamir/Qt/5.15.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
 		ui_debitorcredit.h \
-		../BankAutomat/menuform.h
+		../BankAutomat/menupage.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debitorcredit.o ../BankAutomat/debitorcredit.cpp
 
 main.o: ../BankAutomat/main.cpp ../BankAutomat/mainwindow.h \
@@ -862,6 +879,7 @@ mainwindow.o: ../BankAutomat/mainwindow.cpp ../BankAutomat/mainwindow.h \
 		../BankAutomat/menupage.h \
 		/Users/thaheralamir/Qt/5.15.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		/Users/thaheralamir/Qt/5.15.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		../BankAutomat/debitorcredit.h \
 		ui_mainwindow.h \
 		/Users/thaheralamir/Qt/5.15.1/clang_64/lib/QtNetwork.framework/Headers/QtNetwork \
 		/Users/thaheralamir/Qt/5.15.1/clang_64/lib/QtNetwork.framework/Headers/qtnetworkglobal.h \
@@ -917,7 +935,8 @@ menupage.o: ../BankAutomat/menupage.cpp ../BankAutomat/menupage.h \
 		/Users/thaheralamir/Qt/5.15.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
 		../BankAutomat/saldoform.h \
 		../BankAutomat/nostoform.h \
-		ui_menupage.h
+		ui_menupage.h \
+		../BankAutomat/tapahtumatform.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o menupage.o ../BankAutomat/menupage.cpp
 
 nostoform.o: ../BankAutomat/nostoform.cpp ../BankAutomat/nostoform.h \
@@ -997,6 +1016,12 @@ siirtoform.o: ../BankAutomat/siirtoform.cpp ../BankAutomat/siirtoform.h \
 		ui_siirtoform.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o siirtoform.o ../BankAutomat/siirtoform.cpp
 
+talletusform.o: ../BankAutomat/talletusform.cpp ../BankAutomat/talletusform.h \
+		/Users/thaheralamir/Qt/5.15.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		/Users/thaheralamir/Qt/5.15.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		ui_talletusform.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o talletusform.o ../BankAutomat/talletusform.cpp
+
 tapahtumatform.o: ../BankAutomat/tapahtumatform.cpp ../BankAutomat/tapahtumatform.h \
 		/Users/thaheralamir/Qt/5.15.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		/Users/thaheralamir/Qt/5.15.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
@@ -1023,6 +1048,9 @@ moc_signoutform.o: moc_signoutform.cpp
 
 moc_siirtoform.o: moc_siirtoform.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_siirtoform.o moc_siirtoform.cpp
+
+moc_talletusform.o: moc_talletusform.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_talletusform.o moc_talletusform.cpp
 
 moc_tapahtumatform.o: moc_tapahtumatform.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_tapahtumatform.o moc_tapahtumatform.cpp
