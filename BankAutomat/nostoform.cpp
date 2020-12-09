@@ -19,7 +19,7 @@ NostoForm::~NostoForm()
 
 
 
-void NostoForm::on_btn20euroa_clicked()
+void NostoForm::on_btn20euroa_clicked()                     // Clicked withdraw sum of = 20.
 {
     ui->lineEditMuuSumma->setText("20 €");
     ui->labelMuu->setText("Valittu: ");
@@ -68,16 +68,16 @@ void NostoForm::on_btn100euroa_clicked()
 
 void NostoForm::on_btnVahvista_clicked()
 {
-    if(nostosumma != NULL)
+    if(nostosumma != NULL) 
     {
     ui->labelNostoStatus->setText(nostosumma+"€ Nosto Onnistui tililtä!");
     ui->btnStop->setText("Sulje");
     }
-    else {
+    else {                                                      // Vahvista clicked with no withdraw sum 
     ui->labelNostoStatus->setText("Valitse Nostosumma ensin !");
     }
 }
-void NostoForm::on_btnStop_clicked()
+void NostoForm::on_btnStop_clicked()                           //close Nosto + Open Menu 
 {
     this->close();
     MenuPage *mpp= new MenuPage();
