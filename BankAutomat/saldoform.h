@@ -18,6 +18,8 @@ public:
 private slots:
     void on_btnSulje_clicked();
 
+    void on_btnShowSaldo_clicked();
+
 private:
     Ui::SaldoForm *ui;
 };

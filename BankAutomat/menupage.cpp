@@ -1,7 +1,6 @@
 #include "menupage.h"
 #include "saldoform.h"
 #include "nostoform.h"
-
 #include "ui_menupage.h"
 
 MenuPage::MenuPage(QWidget *parent) :
@@ -29,4 +28,9 @@ void MenuPage::on_btnOpenSaldo_clicked()
     SaldoForm *sfm= new SaldoForm();
     sfm->show();
 
+}
+
+void MenuPage::on_btnCloseMenuPage_clicked()
+{
+    this ->close();
 }

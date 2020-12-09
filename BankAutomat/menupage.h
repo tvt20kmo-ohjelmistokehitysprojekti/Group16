@@ -14,14 +14,15 @@ class MenuPage : public QWidget
 public:
     explicit MenuPage(QWidget *parent = nullptr);
     ~MenuPage()
-    {
-        delete ui;
-    }
-
+{
+    delete ui;
+}
 private slots:
     void on_btnOpenNosto_clicked();
 
     void on_btnOpenSaldo_clicked();
+
+    void on_btnCloseMenuPage_clicked();
 
 private:
     Ui::MenuPage *ui;

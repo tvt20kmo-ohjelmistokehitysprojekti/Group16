@@ -73,6 +73,19 @@
     <string>Bank Automat</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="btnShowSaldo">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>80</y>
+     <width>161</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Näytä Saldo</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "mainwindow.h"
 #include "menupage.h"
+#include "debitorcredit.h"
+
 #include "ui_mainwindow.h"
 #include <QtNetwork>
 #include <QNetworkRequest>
@@ -105,8 +107,8 @@ void MainWindow::on_btnShowBooks_clicked()
 
 void MainWindow::on_btnSignIn_2_clicked()
 {
-    MenuPage *mep= new MenuPage();
-    mep->show();
+    DebitorCredit *doc= new DebitorCredit();
+    doc->show();
 
     this->close();
 

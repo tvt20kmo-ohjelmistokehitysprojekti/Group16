@@ -3,7 +3,11 @@
 #include "menupage.h"
 #include "nostoform.h"
 
-QString nostosumma;
+#include <QNetworkAccessManager>
+#include <QNetworkRequest>
+
+
+QString AccountID, nostosumma, Balance;
 
 NostoForm::NostoForm(QWidget *parent) :
     QWidget(parent),
@@ -68,18 +72,26 @@ void NostoForm::on_btn100euroa_clicked()
 
 void NostoForm::on_btnVahvista_clicked()
 {
+
     if(nostosumma != NULL)
     {
-    ui->labelNostoStatus->setText(nostosumma+"€ Nosto Onnistui tililtä!");
+    ui->labelNostoStatus->setText(nostosumma+" €");
     ui->btnStop->setText("Sulje");
     }
     else {
     ui->labelNostoStatus->setText("Valitse Nostosumma ensin !");
     }
+    if(nostosumma != NULL)
+    {
+        ui->labelNostoStatus->setText("Nosto Tapahtuma Onnistui! ");
+    }
 }
 void NostoForm::on_btnStop_clicked()
 {
     this->close();
+
     MenuPage *mpp= new MenuPage();
     mpp ->show();
+
+
 }
