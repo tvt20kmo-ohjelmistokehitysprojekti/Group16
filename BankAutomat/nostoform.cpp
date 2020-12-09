@@ -1,8 +1,6 @@
 #include "nostoform.h"
 #include "ui_nostoform.h"
 #include "menupage.h"
-#include "nostoform.h"
-
 #include <QNetworkAccessManager>
 #include <QNetworkRequest>
 
@@ -72,12 +70,8 @@ void NostoForm::on_btn100euroa_clicked()
 
 void NostoForm::on_btnVahvista_clicked()
 {
-<<<<<<< HEAD
 
-    if(nostosumma != NULL)
-=======
     if(nostosumma != NULL) 
->>>>>>> 539f609e022bc3a4da7503ef542d490ffd78fe01
     {
     ui->labelNostoStatus->setText(nostosumma+" €");
     ui->btnStop->setText("Sulje");
