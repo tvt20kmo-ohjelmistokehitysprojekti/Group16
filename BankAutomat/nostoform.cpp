@@ -83,3 +83,4 @@ void NostoForm::on_btnStop_clicked()                           //close Nosto + O
     MenuPage *mpp= new MenuPage();
     mpp ->show();
 }
+
