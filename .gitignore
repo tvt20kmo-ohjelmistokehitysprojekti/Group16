@@ -34,7 +34,7 @@ Thumbs.db
 *.rc
 /.qmake.cache
 /.qmake.stash
-/build-BankAutomat-Desktop_Qt_5_15_1_clang_64bit-Debug
+/build-BankAutomat-Desktop_Qt_5_15_1_clang_64bit-Debug/
   build-BankAutomat-Desktop_Qt_5_15_1_clang_64bit-Debug
   build-BankAutomat-Desktop_Qt_5_15_1_clang_64bit-Debug/.qmake.stash
    build-BankAutomat-Desktop_Qt_5_15_1_clang_64bit-Debug/BankAutomat.app/Contents/Info.plist
