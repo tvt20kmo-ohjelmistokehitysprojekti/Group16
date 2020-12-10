@@ -59,7 +59,7 @@ void SaldoForm::on_btnShowSaldo_clicked()
 
 
             QJsonObject info = value.toObject();
-            saldo+= info["name"].toString() +"\n";
+            saldo+= info["Date"].toString() +"  |  ";
 
 
            ui->labelSaldo->setText(saldo); //<----(Account) here

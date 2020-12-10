@@ -53,8 +53,9 @@ void TapahtumatForm::on_btnShowTapahtumat_clicked()
         QString Name;
         foreach(const QJsonValue &value, jsarr){
            QJsonObject event = value.toObject();
-           Name+= event["name"].toString()  +", "
-                   +event["isbn"].toString().toInt() +"\r ";
+           Name+=event["name"].toString()   +"|  \b |"
+                 +event["author"].toString()+"|  \b |"
+                 +event["isbn"].toString()  +"|  \n |";
 
            QString Author;
            foreach(const QJsonValue &value, jsarr){
@@ -66,7 +67,7 @@ void TapahtumatForm::on_btnShowTapahtumat_clicked()
                  QJsonObject event = value.toObject();
                  book_id+= event["book_id"].toString()    +"\r ";
 
-       ui->textEditTapahtumat->setText(Name);
+       ui->textEditTapahtumat->setText(" "+Name);
 
 }
 }
