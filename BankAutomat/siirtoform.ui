@@ -35,8 +35,8 @@
   <widget class="QLabel" name="labelSyotaSumma">
    <property name="geometry">
     <rect>
-     <x>190</x>
-     <y>130</y>
+     <x>300</x>
+     <y>140</y>
      <width>101</width>
      <height>21</height>
     </rect>
@@ -48,8 +48,8 @@
   <widget class="QLineEdit" name="lineEditSiirtoSumma">
    <property name="geometry">
     <rect>
-     <x>300</x>
-     <y>130</y>
+     <x>410</x>
+     <y>140</y>
      <width>113</width>
      <height>24</height>
     </rect>
@@ -58,8 +58,8 @@
   <widget class="QPushButton" name="btnSiirto">
    <property name="geometry">
     <rect>
-     <x>140</x>
-     <y>240</y>
+     <x>400</x>
+     <y>190</y>
      <width>141</width>
      <height>31</height>
     </rect>
@@ -71,9 +71,9 @@
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>180</x>
-     <y>190</y>
-     <width>231</width>
+     <x>30</x>
+     <y>200</y>
+     <width>281</width>
      <height>16</height>
     </rect>
    </property>
@@ -92,8 +92,8 @@
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>180</x>
-     <y>210</y>
+     <x>30</x>
+     <y>220</y>
      <width>191</width>
      <height>16</height>
     </rect>
@@ -113,7 +113,7 @@
   <widget class="QPushButton" name="btnSiirto_2">
    <property name="geometry">
     <rect>
-     <x>320</x>
+     <x>400</x>
      <y>240</y>
      <width>141</width>
      <height>31</height>

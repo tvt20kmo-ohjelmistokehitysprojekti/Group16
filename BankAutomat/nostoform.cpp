@@ -23,6 +23,7 @@ NostoForm::~NostoForm()
 
 
 
+//Withdraw options below
 void NostoForm::on_btn20euroa_clicked()                     // Clicked withdraw sum of = 20.
 {
     ui->lineEditMuuSumma->setText("20 €");
@@ -72,7 +73,7 @@ void NostoForm::on_btn100euroa_clicked()
 
 void NostoForm::on_btnVahvista_clicked()
 {
-    //Check QNetwork reply to balance & compare if can withdraw
+    //Check reply to balance query & compare if can withdraw
 
 if(nostosumma != NULL)
     {

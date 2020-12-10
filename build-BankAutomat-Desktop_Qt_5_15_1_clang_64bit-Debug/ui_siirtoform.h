@@ -43,28 +43,28 @@ public:
         label->setFont(font);
         labelSyotaSumma = new QLabel(SiirtoForm);
         labelSyotaSumma->setObjectName(QString::fromUtf8("labelSyotaSumma"));
-        labelSyotaSumma->setGeometry(QRect(190, 130, 101, 21));
+        labelSyotaSumma->setGeometry(QRect(300, 140, 101, 21));
         lineEditSiirtoSumma = new QLineEdit(SiirtoForm);
         lineEditSiirtoSumma->setObjectName(QString::fromUtf8("lineEditSiirtoSumma"));
-        lineEditSiirtoSumma->setGeometry(QRect(300, 130, 113, 24));
+        lineEditSiirtoSumma->setGeometry(QRect(410, 140, 113, 24));
         btnSiirto = new QPushButton(SiirtoForm);
         btnSiirto->setObjectName(QString::fromUtf8("btnSiirto"));
-        btnSiirto->setGeometry(QRect(140, 240, 141, 31));
+        btnSiirto->setGeometry(QRect(400, 190, 141, 31));
         label_3 = new QLabel(SiirtoForm);
         label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setGeometry(QRect(180, 190, 231, 16));
+        label_3->setGeometry(QRect(30, 200, 281, 16));
         QFont font1;
         font1.setPointSize(17);
         label_3->setFont(font1);
         label_3->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
         label_4 = new QLabel(SiirtoForm);
         label_4->setObjectName(QString::fromUtf8("label_4"));
-        label_4->setGeometry(QRect(180, 210, 191, 16));
+        label_4->setGeometry(QRect(30, 220, 191, 16));
         label_4->setFont(font1);
         label_4->setAlignment(Qt::AlignHCenter|Qt::AlignTop);
         btnSiirto_2 = new QPushButton(SiirtoForm);
         btnSiirto_2->setObjectName(QString::fromUtf8("btnSiirto_2"));
-        btnSiirto_2->setGeometry(QRect(320, 240, 141, 31));
+        btnSiirto_2->setGeometry(QRect(400, 240, 141, 31));
 
         retranslateUi(SiirtoForm);
 

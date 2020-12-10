@@ -30,7 +30,7 @@ public:
         if (SaldoForm->objectName().isEmpty())
             SaldoForm->setObjectName(QString::fromUtf8("SaldoForm"));
         SaldoForm->setEnabled(true);
-        SaldoForm->resize(600, 193);
+        SaldoForm->resize(600, 213);
         QSizePolicy sizePolicy(QSizePolicy::Maximum, QSizePolicy::Maximum);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -43,7 +43,7 @@ public:
         labelBalance->setGeometry(QRect(70, 110, 451, 21));
         btnSulje = new QPushButton(SaldoForm);
         btnSulje->setObjectName(QString::fromUtf8("btnSulje"));
-        btnSulje->setGeometry(QRect(210, 140, 181, 31));
+        btnSulje->setGeometry(QRect(210, 160, 181, 31));
         label_3 = new QLabel(SaldoForm);
         label_3->setObjectName(QString::fromUtf8("label_3"));
         label_3->setGeometry(QRect(150, 10, 291, 61));
@@ -53,7 +53,7 @@ public:
         label_3->setFont(font);
         btnShowSaldo = new QPushButton(SaldoForm);
         btnShowSaldo->setObjectName(QString::fromUtf8("btnShowSaldo"));
-        btnShowSaldo->setGeometry(QRect(220, 80, 161, 31));
+        btnShowSaldo->setGeometry(QRect(420, 160, 161, 31));
 
         retranslateUi(SaldoForm);
 

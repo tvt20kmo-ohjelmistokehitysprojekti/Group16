@@ -4,7 +4,6 @@
 #include "ui_menupage.h"
 #include "tapahtumatform.h"
 #include "talletusform.h"
-
 #include <signoutform.h>
 
 MenuPage::MenuPage(QWidget *parent) :
@@ -43,14 +42,6 @@ void MenuPage::on_btnOpenSaldo_clicked()
 
 }
 
-void MenuPage::on_btnCloseMenuPage_clicked()
-{
-    SignOutForm *out= new SignOutForm();
-    out->show();
-
-    this->close();
-}
-
 void MenuPage::on_btnOpenTapahtumat_clicked()
 {
     TapahtumatForm *tff= new TapahtumatForm();
@@ -65,4 +56,12 @@ void MenuPage::on_btnOpenTalletus_clicked()
    ttt->show();
 
    this->close();
+}
+
+void MenuPage::on_btnCloseMenuPage_clicked()
+{
+    SignOutForm *out= new SignOutForm();
+    out->show();
+
+    this->close();
 }

@@ -8,7 +8,6 @@
 #include <qjsondocument.h>
 
 
-
 SaldoForm::SaldoForm(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::SaldoForm)
@@ -21,6 +20,7 @@ SaldoForm::~SaldoForm()
     delete ui;
 }
 
+
 void SaldoForm::on_btnShowSaldo_clicked()
 {
     QNetworkRequest request(QUrl("http://192.168.64.3/dashboard/RestApi/index.php/api/book/book/"));
@@ -32,6 +32,7 @@ void SaldoForm::on_btnShowSaldo_clicked()
            QByteArray data = concatenatedCredentials.toLocal8Bit().toBase64();
            QString headerData = "Basic " + data;
            request.setRawHeader( "Authorization", headerData.toLocal8Bit() );
+
 
         QNetworkAccessManager nam;
         QNetworkReply *reply = nam.get(request);

@@ -1,5 +1,4 @@
 #include "mainwindow.h"
-#include "mainwindow.h"
 #include "menupage.h"
 #include "debitorcredit.h"
 
@@ -7,7 +6,6 @@
 #include <QtNetwork>
 #include <QNetworkRequest>
 #include <QNetworkAccessManager>
-
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -23,7 +21,7 @@ MainWindow::~MainWindow()
 }
 
 
-void MainWindow::on_btnSignIn_clicked()
+void MainWindow::on_btnSignIn_clicked() // Login system not progressing
 
 {
 
@@ -35,8 +33,8 @@ void MainWindow::on_btnSignIn_clicked()
 
     QNetworkRequest request(QUrl("http://192.168.64.3/dashboard/Group16/RestApi/index.php/api/login"));
         request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-        //Authenticate
-        QString username="admin";
+
+        QString username="admin";       //Authenticate
         QString password="1234";
         QString concatenatedCredentials = username + ":" + password;
            QByteArray data = concatenatedCredentials.toLocal8Bit().toBase64();
@@ -62,7 +60,14 @@ void MainWindow::on_btnSignIn_clicked()
             ui->labelSignIn->setText("Right");
         }
         else {
-            ui->labelSignIn->setText("Wrong");
+
+            ui->labelSignIn->setText("Wrong"); //for now used
+
+            DebitorCredit *doc= new DebitorCredit();
+            doc ->show();
+
+            this->close();
+
 
         }
 
@@ -72,7 +77,7 @@ void MainWindow::on_btnSignIn_clicked()
 
 void MainWindow::on_btnShowBooks_clicked()
 {
-    QNetworkRequest request(QUrl("http://192.168.64.3/dashboard/Group16/RestApi/index.php/api/book/book/"));
+    QNetworkRequest request(QUrl("http://192.168.64.3/dashboard/RestApi/index.php/api/book/book/"));
         request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
         //Authenticate
         QString username="admin";
@@ -90,6 +95,7 @@ void MainWindow::on_btnShowBooks_clicked()
         }
         QByteArray response_data = reply->readAll();
 
+
         QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
         QJsonObject jsobj = json_doc.object();
         QJsonArray jsarr = json_doc.array();
@@ -97,7 +103,9 @@ void MainWindow::on_btnShowBooks_clicked()
         QString book;
         foreach (const QJsonValue &value, jsarr) {
           QJsonObject jsob = value.toObject();
-          book+=jsob["id_book"].toString()+", "+jsob["name"].toString()+", "+jsob["author"].toString()+"\r";
+          book+=jsob["id_book"].toString()+", "
+                  +jsob["name"].toString()+", "
+                  +jsob["author"].toString()+"\r";
           ui->txtBooks->setText(book);
         }
 
@@ -107,9 +115,7 @@ void MainWindow::on_btnShowBooks_clicked()
 
 void MainWindow::on_btnSignIn_2_clicked()
 {
-    DebitorCredit *doc= new DebitorCredit();
-    doc->show();
 
-    this->close();
+
 
 }
