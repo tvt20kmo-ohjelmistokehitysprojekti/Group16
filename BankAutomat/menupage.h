@@ -27,6 +27,8 @@ private slots:
 
     void on_btnOpenTalletus_clicked();
 
+    void on_btnCardID_clicked();
+
 private:
     Ui::MenuPage *ui;
 };

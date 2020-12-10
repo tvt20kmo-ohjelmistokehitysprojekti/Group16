@@ -1,12 +1,16 @@
 #include "nostoform.h"
 #include "ui_nostoform.h"
 #include "menupage.h"
+#include <QByteArray>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QJsonObject>
 #include <QNetworkAccessManager>
+#include <QNetworkReply>
 #include <QNetworkRequest>
 
 
-QString AccountID,
-       nostosumma,
+QString nostosumma,
           Balance;
 
 NostoForm::NostoForm(QWidget *parent) :
@@ -73,25 +77,50 @@ void NostoForm::on_btn100euroa_clicked()
 
 void NostoForm::on_btnVahvista_clicked()
 {
-    //Check reply to balance query & compare if can withdraw
+                                     //Check reply to balance query & compare if can withdraw
 
-if(nostosumma != NULL)
-    {
-    ui->labelNostoStatus->setText(nostosumma+" €");
-    ui->btnStop->setText("Sulje");
-    }
-
-else {                                                      // Vahvista clicked with no withdraw sum
-    ui->labelNostoStatus->setText("Valitse Nostosumma ensin !");
-    }
-
-if(Balance != nostosumma) //switch here
-    {
-        ui->labelNostoStatus->setText("Kate ei riitä, yritä uudelleen!");
+    QNetworkRequest request(QUrl("http://192.168.64.3/dashboard/RestApi/index.php/api/book/book/"));
+        request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+        //Authenticate
+        QString username="admin";
+        QString password="1234";
+        QString concatenatedCredentials = username + ":" + password;
+           QByteArray data = concatenatedCredentials.toLocal8Bit().toBase64();
+           QString headerData = "Basic " + data;
+           request.setRawHeader( "Authorization", headerData.toLocal8Bit() );
 
 
-    }
-  //  ui->labelNostoStatus->setText("Nosto Tapahtuma Onnistui! ");
+        QNetworkAccessManager nam;
+        QNetworkReply *reply = nam.get(request);
+        while (!reply->isFinished())
+        {
+            qApp->processEvents();
+        }
+        QByteArray response_data = reply->readAll();
+
+        QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
+        QJsonArray jsarr = json_doc.array();
+
+
+
+        QString nosto;
+        QString tester;
+
+        foreach(const QJsonValue &value, jsarr){
+            QJsonObject test = value.toObject();
+            tester+= test["name"].toString()                   +", "
+                    +test["Date"].toString()                   +",\r ";
+//        foreach(const QJsonValue &value, jsarr){
+//            QJsonObject info = value.toObject();
+//            nosto+= info["idAccount"].toString()    +", "
+//                    +info["TYPE"].toString()        +", "
+//                    +info["CreditLimit"].toString() +", "
+//                    +info["Balance"].toString()     +"\r";
+
+
+           ui->labelNostoStatus->setText(tester);
+
+        }
 
 }
 

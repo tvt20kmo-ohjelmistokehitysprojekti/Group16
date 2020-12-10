@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "menupage.h"
 #include "debitorcredit.h"
+#include "mysingleton.h"
 
 #include "ui_mainwindow.h"
 #include <QtNetwork>
@@ -25,34 +26,44 @@ void MainWindow::on_btnSignIn_clicked() // Login system not progressing
 
 {
 
+    QString loginUsername,              //CardID
+            loginPassword;              //Password
 
 
-    QString loginUsername,loginPassword;
     loginUsername=ui->lineEditUser->text();
     loginPassword=ui->lineEditPin->text();
 
-    QNetworkRequest request(QUrl("http://192.168.64.3/dashboard/Group16/RestApi/index.php/api/login"));
-        request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 
-        QString username="admin";       //Authenticate
+    MySingleton *login = MySingleton::getInstance(); //move cardID to menu
+
+    login->setAccountID(loginUsername);
+
+
+
+
+    QNetworkRequest request(QUrl("http://192.168.64.3/dashboard/RestApi/index.php/api/login?username="+loginUsername+"&password="+loginPassword)) ;
+        request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");       //correct url above needed !
+
+        QString username="admin";        //Authenticate
         QString password="1234";
         QString concatenatedCredentials = username + ":" + password;
-           QByteArray data = concatenatedCredentials.toLocal8Bit().toBase64();
-           QString headerData = "Basic " + data;
-           request.setRawHeader( "Authorization", headerData.toLocal8Bit() );
+        QByteArray data = concatenatedCredentials.toLocal8Bit().toBase64();
+        QString headerData = "Basic " + data;
+        request.setRawHeader( "Authorization", headerData.toLocal8Bit() );
 
            QJsonObject json;
-           json.insert("username",loginUsername);
-           json.insert("password",loginPassword);
            QNetworkAccessManager nam;
            QNetworkReply *reply = nam.post(request, QJsonDocument(json).toJson());
-        while (!reply->isFinished())
+
+           while (!reply->isFinished())
         {
             qApp->processEvents();
         }
-        QByteArray response_data = reply->readAll();
 
-        qDebug()<<"DATA:"+response_data;
+           QByteArray response_data = reply->readAll();
+
+
+           qDebug()<<"DATA: "+response_data;
 
         reply->deleteLater();
 
@@ -79,7 +90,7 @@ void MainWindow::on_btnShowBooks_clicked()
 {
     QNetworkRequest request(QUrl("http://192.168.64.3/dashboard/RestApi/index.php/api/book/book/"));
         request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-        //Authenticate
+                                      //Authenticate
         QString username="admin";
         QString password="1234";
         QString concatenatedCredentials = username +":"+ password;
@@ -101,7 +112,7 @@ void MainWindow::on_btnShowBooks_clicked()
         QJsonArray jsarr = json_doc.array();
 
         QString book;
-        foreach (const QJsonValue &value, jsarr) {
+        foreach (const QJsonValue &value, jsarr) { //currently as a Test //IGNORE THIS
           QJsonObject jsob = value.toObject();
           book+=jsob["id_book"].toString()+", "
                   +jsob["name"].toString()+", "
@@ -113,9 +124,3 @@ void MainWindow::on_btnShowBooks_clicked()
 }
 
 
-void MainWindow::on_btnSignIn_2_clicked()
-{
-
-
-
-}

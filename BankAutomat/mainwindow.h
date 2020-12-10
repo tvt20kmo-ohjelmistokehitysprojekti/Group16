@@ -20,8 +20,6 @@ private slots:
 
     void on_btnShowBooks_clicked();
 
-    void on_btnSignIn_2_clicked();
-
 private:
     Ui::MainWindow *ui;
 

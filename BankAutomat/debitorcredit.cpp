@@ -18,7 +18,7 @@ DebitorCredit::~DebitorCredit()
 
 }
 
-void DebitorCredit::on_btnValitseCredit_clicked()
+void DebitorCredit::on_btnValitseCredit_clicked() // Credit tili valinta
 {
     MenuPage *mpp = new MenuPage();
     mpp->show();
@@ -26,7 +26,7 @@ void DebitorCredit::on_btnValitseCredit_clicked()
     this->close();
 }
 
-void DebitorCredit::on_btnValitseDebit_clicked()
+void DebitorCredit::on_btnValitseDebit_clicked() // Debit tili valinta
 {
     MenuPage *mpp = new MenuPage();
     mpp->show();

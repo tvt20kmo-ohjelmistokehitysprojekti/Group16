@@ -14,23 +14,27 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     menupage.cpp \
+    mysingleton.cpp \
     nostoform.cpp \
     saldoform.cpp \
     signoutform.cpp \
     siirtoform.cpp \
     talletusform.cpp \
-    tapahtumatform.cpp
+    tapahtumatform.cpp \
+    user.cpp
 
 HEADERS += \
     debitorcredit.h \
     mainwindow.h \
     menupage.h \
+    mysingleton.h \
     nostoform.h \
     saldoform.h \
     signoutform.h \
     siirtoform.h \
     talletusform.h \
-    tapahtumatform.h
+    tapahtumatform.h \
+    user.h
 
 FORMS += \
     debitorcredit.ui \

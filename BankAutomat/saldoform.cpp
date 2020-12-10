@@ -43,16 +43,26 @@ void SaldoForm::on_btnShowSaldo_clicked()
         QByteArray response_data = reply->readAll();
 
         QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
-        QJsonObject jsobj = json_doc.object();
         QJsonArray jsarr = json_doc.array();
-        QString Account;
+
+        // QString Account;
+
+        QString saldo;
+
         foreach(const QJsonValue &value, jsarr){
-           QJsonObject acnt = value.toObject();
-           Account+=acnt["idAccount"].toString()    +", "
-                   +acnt["TYPE"].toString()         +", "
-                   +acnt["Creditlimit"].toString()  +", "
-                   +acnt["Balance"].toString()      +"\r";
-           ui->labelBalance->setText(Account);
+
+          // QJsonObject acnt = value.toObject();
+         //  Account+=acnt["idAccount"].toString()    +", "
+           //        +acnt["TYPE"].toString()         +", "
+             //      +acnt["Creditlimit"].toString()  +", "
+               //    +acnt["Balance"].toString()      +"\r";
+
+
+            QJsonObject info = value.toObject();
+            saldo+= info["name"].toString() +"\n";
+
+
+           ui->labelSaldo->setText(saldo); //<----(Account) here
 
         }
 

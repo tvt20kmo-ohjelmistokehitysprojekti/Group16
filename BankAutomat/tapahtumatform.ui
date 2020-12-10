@@ -32,16 +32,6 @@
     <string>Bank Automat</string>
    </property>
   </widget>
-  <widget class="QTableView" name="tableTapahtumat">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>140</y>
-     <width>521</width>
-     <height>111</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QPushButton" name="btnCloseTapahtumat">
    <property name="geometry">
     <rect>
@@ -55,17 +45,27 @@
     <string>Sulje</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="btnShowTapahtumat">
    <property name="geometry">
     <rect>
-     <x>240</x>
+     <x>220</x>
      <y>100</y>
-     <width>121</width>
+     <width>141</width>
      <height>24</height>
     </rect>
    </property>
    <property name="text">
     <string>Näytä Tapahtumat</string>
+   </property>
+  </widget>
+  <widget class="QTableView" name="tableTapahtumat">
+   <property name="geometry">
+    <rect>
+     <x>50</x>
+     <y>140</y>
+     <width>511</width>
+     <height>121</height>
+    </rect>
    </property>
   </widget>
  </widget>
