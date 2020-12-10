@@ -58,13 +58,13 @@
     <string>Näytä Tapahtumat</string>
    </property>
   </widget>
-  <widget class="QTableView" name="tableTapahtumat">
+  <widget class="QTextEdit" name="textEditTapahtumat">
    <property name="geometry">
     <rect>
-     <x>50</x>
+     <x>40</x>
      <y>140</y>
-     <width>511</width>
-     <height>121</height>
+     <width>521</width>
+     <height>91</height>
     </rect>
    </property>
   </widget>

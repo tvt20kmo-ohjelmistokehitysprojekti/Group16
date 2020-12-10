@@ -53,7 +53,8 @@ void TapahtumatForm::on_btnShowTapahtumat_clicked()
         QString Name;
         foreach(const QJsonValue &value, jsarr){
            QJsonObject event = value.toObject();
-           Name+= event["name"].toString()    +"\r ";
+           Name+= event["name"].toString()  +", "
+                   +event["isbn"].toString().toInt() +"\r ";
 
            QString Author;
            foreach(const QJsonValue &value, jsarr){
@@ -65,52 +66,7 @@ void TapahtumatForm::on_btnShowTapahtumat_clicked()
                  QJsonObject event = value.toObject();
                  book_id+= event["book_id"].toString()    +"\r ";
 
-
-//idHappenings Date Balance
-
-
-
-
-
-QList<User*> UserList;  //In progress. tricky things
-User User_1, User_2, User_3;
-
-UserList.append(&User_1);
-UserList.append(&User_2);
-UserList.append(&User_3);
-
-User_1.setFirstName(Name);
-User_1.setLastName(Author);
-User_1.setBookID(book_id);
-
-
-
-    User_2.setFirstName(Name);
-    User_2.setLastName(Author);
-    User_2.setBookID(book_id);
-
-
-        User_3.setFirstName(Name);
-        User_3.setLastName(Author);
-        User_3.setBookID(book_id);
-
-
-QStandardItemModel *table_model = new QStandardItemModel(UserList.size(),3);
-table_model->setHeaderData(0, Qt::Horizontal, QObject::tr("Tapahtuma ID"));
-table_model->setHeaderData(1, Qt::Horizontal, QObject::tr("Summa"));
-table_model->setHeaderData(2, Qt::Horizontal, QObject::tr("More Info"));
-
-for (int row = 0; row < UserList.size(); ++row) {
-        QStandardItem *name = new QStandardItem((UserList[row]->getFirstName()));
-        table_model->setItem(row, 0, name);
-        QStandardItem *author = new QStandardItem((UserList[row]->getLastName()));
-        table_model->setItem(row, 1, author);
-        QStandardItem *bookid = new QStandardItem((UserList[row]->getBookID()));
-        table_model->setItem(row, 2, bookid);
-
-}
-
-ui->tableTapahtumat->setModel(table_model);
+       ui->textEditTapahtumat->setText(Name);
 
 }
 }

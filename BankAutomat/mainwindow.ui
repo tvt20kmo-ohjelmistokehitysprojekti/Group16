@@ -136,29 +136,6 @@
      <string/>
     </property>
    </widget>
-   <widget class="QPushButton" name="btnShowBooks">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>200</y>
-      <width>111</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Show Result</string>
-    </property>
-   </widget>
-   <widget class="QTextEdit" name="txtBooks">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>250</y>
-      <width>161</width>
-      <height>131</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QLabel" name="labelResult">
     <property name="geometry">
      <rect>
@@ -169,20 +146,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>here</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="btnSignIn_2">
-    <property name="geometry">
-     <rect>
-      <x>230</x>
-      <y>390</y>
-      <width>181</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>MENU PAGE</string>
+     <string/>
     </property>
    </widget>
   </widget>
