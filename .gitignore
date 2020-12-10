@@ -34,11 +34,7 @@ Thumbs.db
 *.rc
 /.qmake.cache
 /.qmake.stash
-<<<<<<< HEAD
  build-BankAutomat-Desktop_Qt_5_15_1_clang_64bit-Debug
-=======
-/build-BankAutomat-Desktop_Qt_5_15_1_clang_64bit-Debug/
->>>>>>> 95a990f0f55170531dfa773580d0c70076d447a2
   build-BankAutomat-Desktop_Qt_5_15_1_clang_64bit-Debug
   build-BankAutomat-Desktop_Qt_5_15_1_clang_64bit-Debug/.qmake.stash
    build-BankAutomat-Desktop_Qt_5_15_1_clang_64bit-Debug/BankAutomat.app/Contents/Info.plist
@@ -209,7 +205,7 @@ Thumbs.db
 	build-BankAutomat-Desktop_Qt_5_15_1_clang_64bit-Debug/talletusform.o
 	build-BankAutomat-Desktop_Qt_5_15_1_clang_64bit-Debug/ui_talletusform.h
 	build-BankAutomat-Desktop_Qt_5_15_1_clang_64bit-Debug/
-
+	
 
 
 
@@ -217,6 +213,7 @@ Thumbs.db
 
 # qtcreator generated files
 *.pro.user*
+*build-BankAutomat-Desktop_Qt_5_15_1_clang_64bit-Debug*
 
 # xemacs temporary files
 *.flc
