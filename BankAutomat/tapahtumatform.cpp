@@ -1,4 +1,5 @@
 #include "menupage.h"
+#include "mysingleton.h"
 #include "tapahtumatform.h"
 #include "ui_tapahtumatform.h"
 
@@ -25,7 +26,15 @@ TapahtumatForm::~TapahtumatForm()
 }
 
 void TapahtumatForm::on_btnShowTapahtumat_clicked()
-{
+{   QString TapahtumaTili;
+
+    MySingleton *cardtype = MySingleton::getInstance(); //move cardID
+
+    TapahtumaTili=cardtype->getAccountID();
+
+
+
+
     QNetworkRequest requestTapahtumat(QUrl("http://192.168.64.3/dashboard/RestApi/index.php/api/book/book/"));
         requestTapahtumat.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
                                         //Authenticate
@@ -67,8 +76,16 @@ void TapahtumatForm::on_btnShowTapahtumat_clicked()
                  book_id+= event["book_id"].toString()    +"\r ";}
 
 
-       ui->textEditTapahtumat->setText("Somethings "+Author);
-                                                                // Show Happenings here
+              if(TapahtumaTili == "1")
+              {
+
+                ui->textEditTapahtumat->setText("Credit side history "+Author); //Credit tapahtumat
+              }
+              if(TapahtumaTili == "2")
+              {
+                  ui->textEditTapahtumat->setText("Debit side history "+Name); //Debit tapahtumat
+              }
+
 reply->deleteLater();
 
 

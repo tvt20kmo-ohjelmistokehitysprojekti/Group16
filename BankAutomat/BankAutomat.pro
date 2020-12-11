@@ -20,8 +20,7 @@ SOURCES += \
     signoutform.cpp \
     siirtoform.cpp \
     talletusform.cpp \
-    tapahtumatform.cpp \
-    user.cpp
+    tapahtumatform.cpp
 
 HEADERS += \
     debitorcredit.h \
@@ -33,8 +32,7 @@ HEADERS += \
     signoutform.h \
     siirtoform.h \
     talletusform.h \
-    tapahtumatform.h \
-    user.h
+    tapahtumatform.h
 
 FORMS += \
     debitorcredit.ui \

@@ -6,6 +6,7 @@
 #include "talletusform.h"
 #include "mysingleton.h"
 #include "debitorcredit.h"
+#include <QString>
 #include <signoutform.h>
 
 
@@ -74,18 +75,11 @@ void MenuPage::on_btnCloseMenuPage_clicked() //Close Menu
 
 void MenuPage::on_btnCardID_clicked()   //Check CardID
 {
+    QString DorC;
+    MySingleton *cardtype = MySingleton::getInstance(); //move cardID
 
-    MySingleton *login = MySingleton::getInstance();
+    DorC=cardtype->getAccountID();
 
-    QString AccountID=login->getAccountID();
-    ui->labelResult2->setText(AccountID);
-
-    DebitorCredit *doc= new DebitorCredit();
-    doc->show();
-
-    this->close();
-
-
-
+    ui->labelResult->setText(" "+DorC);
 
 }

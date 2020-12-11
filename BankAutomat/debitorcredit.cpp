@@ -38,11 +38,12 @@ void DebitorCredit::on_btnTili_clicked()
      if(cardchoice <= "0020")     // cardID under 10
     {                            //Credit side account //++missing check availability of creditlimit = if available -- enabled
 
-    ui->btnValitseCredit->setEnabled(true);
+    ui->btnValitseCredit->setEnabled(true);}
 
-    };
+
 
 }
+
 void DebitorCredit::on_btnValitseCredit_clicked()                   // Credit tili valinta
 {
     cardchoice = "1";                                               //Set cardtype to Credit

@@ -1,12 +1,13 @@
+#include "mysingleton.h"
 #include "talletusform.h"
 #include "ui_talletusform.h"
+#include "menupage.h"
 
 
 #include <QtNetwork>
 #include <QNetworkAccessManager>
 #include <QJsonDocument>
 #include <qjsondocument.h>
-#include "menupage.h"
 
 TalletusForm::TalletusForm(QWidget *parent) :
     QWidget(parent),
@@ -22,6 +23,7 @@ TalletusForm::~TalletusForm()
 
 void TalletusForm::on_btnVahvistaTalletus_clicked()
 {
+
     QNetworkRequest request(QUrl("http://192.168.64.3/dashboard/RestApi/index.php/api/book/book/"));
         request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
         //Authenticate
@@ -50,9 +52,10 @@ void TalletusForm::on_btnVahvistaTalletus_clicked()
         foreach(const QJsonValue &value, jsarr){
            QJsonObject talletus = value.toObject();
            BalanceSum+=talletus["idAccount"].toString()    +", "
+                   +talletus["Creditlimit"].toString()  +", "
                    +talletus["Balance"].toString()      +"\r";
 
-           ui->labelTalletusTilille->setText(BalanceSum);
+
 
         }
 
@@ -75,9 +78,23 @@ void TalletusForm::on_btnCloseTalletus_clicked() // Exit
 
 void TalletusForm::on_lineEditSiirtoSumma_textChanged(const QString &arg1) //Show talletus sum when editing Sum.
 {
-    QString talletusSum;
+    QString talletusSum, typeCheck;
 
     talletusSum= ui->lineEditSiirtoSumma->text();
 
      ui->labelInfo->setText("Talletus summa: "+talletusSum+" €");
+
+
+
+     MySingleton *cardtype = MySingleton::getInstance(); //check cardID (Debit / Credit)
+     typeCheck= cardtype->getAccountID();
+
+     if(typeCheck == "1") //credit chosen
+     {
+         ui->labelTalletusTilille->setText("Credit talletus tapahtuma: "+typeCheck); //<----(Account) here
+     }
+     if(typeCheck == "2") //debit chosen
+     {
+         ui->labelTalletusTilille->setText("Debit talletus tapahtuma: "+typeCheck );
+     }
 }
