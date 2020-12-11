@@ -1,4 +1,4 @@
-
+#include "menupage.h"
 #include "saldoform.h"
 #include "ui_saldoform.h"
 
@@ -22,10 +22,11 @@ SaldoForm::~SaldoForm()
 
 
 void SaldoForm::on_btnShowSaldo_clicked()
-{
+{    QString SaldoAccount;
+                                                                                     //Account/?idAccount="+idAccount below //
     QNetworkRequest request(QUrl("http://192.168.64.3/dashboard/RestApi/index.php/api/book/book/"));
         request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-        //Authenticate
+                                                                                    //Authenticate
         QString username="admin";
         QString password="1234";
         QString concatenatedCredentials = username + ":" + password;
@@ -59,10 +60,10 @@ void SaldoForm::on_btnShowSaldo_clicked()
 
 
             QJsonObject info = value.toObject();
-            saldo+= info["Date"].toString() +"  |  ";
+            saldo+= info["isbn"].toString() +"  |  ";
 
 
-           ui->labelSaldo->setText(saldo); //<----(Account) here
+           ui->labelSaldo->setText(" (€)"+saldo); //<----(Account) here
 
         }
 
@@ -74,5 +75,8 @@ void SaldoForm::on_btnSulje_clicked()
 {
 
     this->close();
+
+    MenuPage *mpp= new MenuPage();
+    mpp->show();
 
 }

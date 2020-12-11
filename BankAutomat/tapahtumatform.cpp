@@ -50,24 +50,25 @@ void TapahtumatForm::on_btnShowTapahtumat_clicked()
         QJsonObject jsobj = json_doc.object();
         QJsonArray jsarr = json_doc.array();
 
-        QString Name;
+        QString Name;                                        //Testings QString name from Book table. APPLY USER DATA !
         foreach(const QJsonValue &value, jsarr){
            QJsonObject event = value.toObject();
            Name+=event["name"].toString()   +"|  \b |"
                  +event["author"].toString()+"|  \b |"
                  +event["isbn"].toString()  +"|  \n |";
 
-           QString Author;
+           QString Author;                                                     //Testings
            foreach(const QJsonValue &value, jsarr){
               QJsonObject event = value.toObject();
               Author+= event["author"].toString()    +"\r ";
 
-              QString book_id;
+              QString book_id;                                                //Testings
               foreach(const QJsonValue &value, jsarr){
                  QJsonObject event = value.toObject();
                  book_id+= event["book_id"].toString()    +"\r ";
 
-       ui->textEditTapahtumat->setText(" "+Name);
+
+       ui->textEditTapahtumat->setText(" "+Name);            // Show Happenings here
 
 }
 }

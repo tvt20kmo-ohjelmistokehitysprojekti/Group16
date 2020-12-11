@@ -20,6 +20,7 @@ DebitorCredit::~DebitorCredit()
 
 void DebitorCredit::on_btnValitseCredit_clicked() // Credit tili valinta
 {
+
     MenuPage *mpp = new MenuPage();
     mpp->show();
 

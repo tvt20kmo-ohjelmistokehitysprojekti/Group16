@@ -76,13 +76,7 @@ void MenuPage::on_btnCardID_clicked()   //Check CardID
     MySingleton *login = MySingleton::getInstance();
 
     QString AccountID=login->getAccountID();
-    if(AccountID > NULL)
 
-    {
         ui->labelResult->setText(AccountID);
-}
-    else
-    {
-        ui->labelResult->setText("Jotain meni pieleen.. Yritä uudelleen!");
-    }
+
 }
