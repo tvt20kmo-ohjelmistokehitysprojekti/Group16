@@ -20,6 +20,9 @@ private slots:
 
     void on_btnValitseDebit_clicked();
 
+
+    void on_btnTili_clicked();
+
 private:
     Ui::DebitorCredit *ui;
 };

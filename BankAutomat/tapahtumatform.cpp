@@ -1,14 +1,13 @@
 #include "menupage.h"
 #include "tapahtumatform.h"
 #include "ui_tapahtumatform.h"
-#include "user.h"
 
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
+
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
-
 #include <QNetworkRequest>
 
 #include <QStandardItemModel>
@@ -55,26 +54,27 @@ void TapahtumatForm::on_btnShowTapahtumat_clicked()
            QJsonObject event = value.toObject();
            Name+=event["name"].toString()   +"|  \b |"
                  +event["author"].toString()+"|  \b |"
-                 +event["isbn"].toString()  +"|  \n |";
+                 +event["isbn"].toString()  +"|  \n |";}
 
            QString Author;                                                     //Testings
            foreach(const QJsonValue &value, jsarr){
               QJsonObject event = value.toObject();
-              Author+= event["author"].toString()    +"\r ";
+              Author+= event["author"].toString()    +"\r ";}
 
               QString book_id;                                                //Testings
               foreach(const QJsonValue &value, jsarr){
                  QJsonObject event = value.toObject();
-                 book_id+= event["book_id"].toString()    +"\r ";
+                 book_id+= event["book_id"].toString()    +"\r ";}
 
 
-       ui->textEditTapahtumat->setText(" "+Name);            // Show Happenings here
+       ui->textEditTapahtumat->setText("Somethings "+Author);
+                                                                // Show Happenings here
+reply->deleteLater();
 
-}
-}
-}
 
-        reply->deleteLater();
+
+
+
 }
 void TapahtumatForm::on_btnCloseTapahtumat_clicked()
 {

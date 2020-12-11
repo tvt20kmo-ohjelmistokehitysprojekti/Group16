@@ -1,8 +1,8 @@
-#include "saldoform.h"
 
 #include "ui_saldoform.h"
 #include "menupage.h"
 #include "mysingleton.h"
+#include "saldoform.h"
 
 #include <QtNetwork>
 #include <QNetworkAccessManager>
@@ -60,6 +60,8 @@ void SaldoForm::on_btnShowSaldo_clicked()
           // QJsonObject acnt = value.toObject();
          //  Account+=   acnt["Creditlimit"].toString()      +", "
                //    +   acnt["Balance"]    .toString()      +"\r";
+
+
             QJsonObject creditsum = value.toObject();
             credit+= creditsum["name"].toString() +"  |  ";
 
@@ -68,24 +70,20 @@ void SaldoForm::on_btnShowSaldo_clicked()
 
 
 
-           MySingleton *cardtype = MySingleton::getInstance(); //move cardID
-           SaldoAccount= cardtype->getCardtype();
+           MySingleton *cardtype = MySingleton::getInstance(); //check cardID (Debit / Credit)
+           SaldoAccount= cardtype->getAccountID();
 
-
-           if(SaldoAccount == "1")
+           if(SaldoAccount == "1") //credit
            {
-               SaldoAccount = creditLimit;
-               ui->labelSaldo->setText("Credit Side "+credit);
+               ui->labelSaldo->setText("Credit Side "+credit); //<----(Account) here
+           }
+           if(SaldoAccount == "2") //debit
+           {
+               ui->labelSaldo->setText("Debit Side "+saldo);
            }
 
 
-           if(SaldoAccount == "2")
-           {
-               ui->labelSaldo->setText("Debit Side (€)"+saldo); //<----(Account) here
 
-           MySingleton *saldoID= MySingleton::getInstance();
-            SaldoAccount= saldoID->getAccountID();
-}
         }
 
         reply->deleteLater();

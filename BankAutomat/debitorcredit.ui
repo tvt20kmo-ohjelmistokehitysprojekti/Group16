@@ -33,6 +33,9 @@
    </property>
   </widget>
   <widget class="QPushButton" name="btnValitseCredit">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>100</x>
@@ -46,6 +49,9 @@
    </property>
   </widget>
   <widget class="QPushButton" name="btnValitseDebit">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>320</x>
@@ -56,6 +62,19 @@
    </property>
    <property name="text">
     <string>Debit</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="btnTili">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>90</y>
+     <width>161</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Valitse Tili</string>
    </property>
   </widget>
  </widget>

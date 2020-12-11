@@ -5,6 +5,7 @@
 #include "tapahtumatform.h"
 #include "talletusform.h"
 #include "mysingleton.h"
+#include "debitorcredit.h"
 #include <signoutform.h>
 
 
@@ -78,6 +79,11 @@ void MenuPage::on_btnCardID_clicked()   //Check CardID
 
     QString AccountID=login->getAccountID();
     ui->labelResult2->setText(AccountID);
+
+    DebitorCredit *doc= new DebitorCredit();
+    doc->show();
+
+    this->close();
 
 
 
