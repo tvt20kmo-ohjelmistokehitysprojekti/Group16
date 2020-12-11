@@ -1,6 +1,8 @@
-#include "menupage.h"
 #include "saldoform.h"
+
 #include "ui_saldoform.h"
+#include "menupage.h"
+#include "mysingleton.h"
 
 #include <QtNetwork>
 #include <QNetworkAccessManager>
@@ -23,7 +25,10 @@ SaldoForm::~SaldoForm()
 
 void SaldoForm::on_btnShowSaldo_clicked()
 {    QString SaldoAccount;
-                                                                                     //Account/?idAccount="+idAccount below //
+
+
+
+                                                                                     //Account/?idAccount="+saldoAccount below //
     QNetworkRequest request(QUrl("http://192.168.64.3/dashboard/RestApi/index.php/api/book/book/"));
         request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
                                                                                     //Authenticate
@@ -48,23 +53,39 @@ void SaldoForm::on_btnShowSaldo_clicked()
 
         // QString Account;
 
-        QString saldo;
+        QString saldo, credit, creditLimit;
 
         foreach(const QJsonValue &value, jsarr){
 
           // QJsonObject acnt = value.toObject();
-         //  Account+=acnt["idAccount"].toString()    +", "
-           //        +acnt["TYPE"].toString()         +", "
-             //      +acnt["Creditlimit"].toString()  +", "
-               //    +acnt["Balance"].toString()      +"\r";
-
+         //  Account+=   acnt["Creditlimit"].toString()      +", "
+               //    +   acnt["Balance"]    .toString()      +"\r";
+            QJsonObject creditsum = value.toObject();
+            credit+= creditsum["name"].toString() +"  |  ";
 
             QJsonObject info = value.toObject();
-            saldo+= info["isbn"].toString() +"  |  ";
+            saldo+= info["isbn"].toString() +"  | ";
 
 
-           ui->labelSaldo->setText(" (€)"+saldo); //<----(Account) here
 
+           MySingleton *cardtype = MySingleton::getInstance(); //move cardID
+           SaldoAccount= cardtype->getCardtype();
+
+
+           if(SaldoAccount == "1")
+           {
+               SaldoAccount = creditLimit;
+               ui->labelSaldo->setText("Credit Side "+credit);
+           }
+
+
+           if(SaldoAccount == "2")
+           {
+               ui->labelSaldo->setText("Debit Side (€)"+saldo); //<----(Account) here
+
+           MySingleton *saldoID= MySingleton::getInstance();
+            SaldoAccount= saldoID->getAccountID();
+}
         }
 
         reply->deleteLater();

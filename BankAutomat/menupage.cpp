@@ -64,10 +64,11 @@ void MenuPage::on_btnOpenTalletus_clicked() //Talletus
 
 void MenuPage::on_btnCloseMenuPage_clicked() //Close Menu
 {
-    SignOutForm *out= new SignOutForm();
-    out->show();
-
     this->close();
+
+    SignOutForm *sof = new SignOutForm();
+    sof->show();
+
 }
 
 void MenuPage::on_btnCardID_clicked()   //Check CardID
@@ -76,7 +77,9 @@ void MenuPage::on_btnCardID_clicked()   //Check CardID
     MySingleton *login = MySingleton::getInstance();
 
     QString AccountID=login->getAccountID();
+    ui->labelResult2->setText(AccountID);
 
-        ui->labelResult->setText(AccountID);
+
+
 
 }

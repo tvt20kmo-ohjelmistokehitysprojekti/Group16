@@ -10,12 +10,18 @@ class MySingleton
 private:
 
     static MySingleton* instance;
-    QString AccountID;
+
+    QString AccountID, Cardtype;
 public:
+
     static MySingleton* getInstance();
+
 
     QString getAccountID() const;
     void setAccountID(const QString &value);
+
+    QString getCardtype() const;
+    void setCardtype(const QString &value);
 
 
 };
