@@ -26,18 +26,17 @@ TapahtumatForm::~TapahtumatForm()
 }
 
 void TapahtumatForm::on_btnShowTapahtumat_clicked()
-{   QString TapahtumaTili;
+{
+  QString TapahtumaTili;
 
     MySingleton *cardtype = MySingleton::getInstance(); //move cardID
 
     TapahtumaTili=cardtype->getAccountID();
 
 
-
-
-    QNetworkRequest requestTapahtumat(QUrl("http://192.168.64.3/dashboard/RestApi/index.php/api/book/book/"));
+       QNetworkRequest requestTapahtumat(QUrl("http://192.168.64.3/dashboard/RestApi/index.php/api/book/book/"));
         requestTapahtumat.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-                                        //Authenticate
+                                         //Authenticate
         QString username="admin";
         QString password="1234";
         QString concatenatedCredentials = username + ":" + password;

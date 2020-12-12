@@ -55,7 +55,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QPushButton" name="btnSiirto">
+  <widget class="QPushButton" name="btnVahvistaSiirto">
    <property name="geometry">
     <rect>
      <x>400</x>
@@ -68,13 +68,13 @@
     <string>Vahvista</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_3">
+  <widget class="QLabel" name="labelFromAccount">
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>200</y>
+     <y>195</y>
      <width>281</width>
-     <height>16</height>
+     <height>21</height>
     </rect>
    </property>
    <property name="font">
@@ -83,19 +83,19 @@
     </font>
    </property>
    <property name="text">
-    <string>Siirretään tililtä</string>
+    <string/>
    </property>
    <property name="alignment">
     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
    </property>
   </widget>
-  <widget class="QLabel" name="label_4">
+  <widget class="QLabel" name="labelToAccount">
    <property name="geometry">
     <rect>
      <x>30</x>
      <y>220</y>
      <width>191</width>
-     <height>16</height>
+     <height>21</height>
     </rect>
    </property>
    <property name="font">
@@ -104,13 +104,13 @@
     </font>
    </property>
    <property name="text">
-    <string>Tilille </string>
+    <string/>
    </property>
    <property name="alignment">
     <set>Qt::AlignHCenter|Qt::AlignTop</set>
    </property>
   </widget>
-  <widget class="QPushButton" name="btnSiirto_2">
+  <widget class="QPushButton" name="btnStop">
    <property name="geometry">
     <rect>
      <x>400</x>
@@ -121,6 +121,19 @@
    </property>
    <property name="text">
     <string>Stop</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelResult">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>105</y>
+     <width>231</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
  </widget>

@@ -29,6 +29,8 @@ private slots:
 
     void on_btnCardID_clicked();
 
+    void on_btnOpenSiirto_clicked();
+
 private:
     Ui::MenuPage *ui;
 };

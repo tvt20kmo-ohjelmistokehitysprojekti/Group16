@@ -8,6 +8,7 @@
 #include "debitorcredit.h"
 #include <QString>
 #include <signoutform.h>
+#include "siirtoform.h"
 
 
 MenuPage::MenuPage(QWidget *parent) :
@@ -80,6 +81,14 @@ void MenuPage::on_btnCardID_clicked()   //Check CardID
 
     DorC=cardtype->getAccountID();
 
-    ui->labelResult->setText(" "+DorC);
+    ui->labelResult->setText("Kortti Käytössä : "+DorC);
 
+}
+
+void MenuPage::on_btnOpenSiirto_clicked()
+{
+    SiirtoForm *sf= new SiirtoForm();
+    sf->show();
+
+    this->close();
 }

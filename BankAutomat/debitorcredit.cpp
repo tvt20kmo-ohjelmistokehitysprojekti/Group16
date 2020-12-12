@@ -1,15 +1,16 @@
-
 #include "debitorcredit.h"
 #include "ui_debitorcredit.h"
 #include "menupage.h"
 #include "saldoform.h"
 #include "ui_saldoform.h"
 #include "mysingleton.h"
+
 #include <QtNetwork>
 #include <QNetworkAccessManager>
 #include <QJsonDocument>
 #include <qjsondocument.h>
 #include <QString>
+
 
 QString cardchoice;
 
@@ -27,16 +28,16 @@ DebitorCredit::~DebitorCredit()
 
 void DebitorCredit::on_btnTili_clicked()
 {
-    MySingleton *cardtype = MySingleton::getInstance(); //move cardID
+    MySingleton *cardtype = MySingleton::getInstance();             //move cardID
 
     cardchoice =cardtype->getAccountID();
 
-    if(cardchoice <= "1000")        //CardID under 1000
+    if(cardchoice <= "1000")                         //CardID under 1000
     {
     ui->btnValitseDebit->setEnabled(true); }
 
-     if(cardchoice <= "0020")     // cardID under 10
-    {                            //Credit side account //++missing check availability of creditlimit = if available -- enabled
+     if(cardchoice <= "0020")                      // cardID under 10
+    {                                              //Credit side account //++missing check availability of creditlimit = if available -- enabled
 
     ui->btnValitseCredit->setEnabled(true);}
 
@@ -44,10 +45,10 @@ void DebitorCredit::on_btnTili_clicked()
 
 }
 
-void DebitorCredit::on_btnValitseCredit_clicked()                   // Credit tili valinta
+void DebitorCredit::on_btnValitseCredit_clicked()                    // Credit tili valinta
 {
-    cardchoice = "1";                                               //Set cardtype to Credit
-    MySingleton *credittype = MySingleton::getInstance();           //move cardID
+    cardchoice = "1";                                                //Set cardtype to Credit
+    MySingleton *credittype = MySingleton::getInstance();            //move cardID to accountID
 
     credittype->setAccountID(cardchoice);
 
@@ -60,10 +61,10 @@ void DebitorCredit::on_btnValitseCredit_clicked()                   // Credit ti
     this->close();
 }
 
-void DebitorCredit::on_btnValitseDebit_clicked() // Debit tili valinta
+void DebitorCredit::on_btnValitseDebit_clicked()                     // Debit tili valinta
 {
     cardchoice = "2";
-    MySingleton *debittype = MySingleton::getInstance(); //move cardID
+    MySingleton *debittype = MySingleton::getInstance();             //move cardID to accountID
 
     debittype->setAccountID(cardchoice);
 

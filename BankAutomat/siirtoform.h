@@ -18,6 +18,12 @@ public:
 private slots:
     void on_btnSiirto_clicked();
 
+    void on_btnVahvistaSiirto_clicked();
+
+    void on_btnStop_clicked();
+
+    void on_lineEditSiirtoSumma_textChanged(const QString &arg1);
+
 private:
     Ui::SiirtoForm *ui;
 };

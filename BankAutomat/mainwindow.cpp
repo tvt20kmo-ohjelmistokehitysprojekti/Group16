@@ -24,7 +24,7 @@ MainWindow::~MainWindow()
 
 }
 
-QString loginCardID,                       //CardID
+QString loginCardID,                       //CardID also
         loginPassword;                    //Password
 
 void MainWindow::on_btnSignIn_clicked() // Login system not progressing
@@ -69,18 +69,23 @@ void MainWindow::on_btnSignIn_clicked() // Login system not progressing
 
             QNetworkAccessManager nami;
             QNetworkReply *rep = nam.get(request);
+
             while (!rep->isFinished())
             {
                 qApp->processEvents();
             }
+
             QByteArray reply_data = rep->readAll();
 
             QJsonDocument json_docs = QJsonDocument::fromJson(reply_data);
             QJsonArray jsar = json_docs.array();
 
+
+
+
             // QString Account;
 
-            QString creditcheck;
+    QString creditcheck;
 
             foreach(const QJsonValue &value, jsar){
 
