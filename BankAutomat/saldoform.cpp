@@ -24,12 +24,17 @@ SaldoForm::~SaldoForm()
 
 
 void SaldoForm::on_btnShowSaldo_clicked()
-{    QString SaldoAccount;
+{
+    QString SaldoAccount;
+
+    MySingleton *cardtype = MySingleton::getInstance(); //move cardID
+
+    SaldoAccount=cardtype->getAccountID();
 
 
 
-                                                                                     //Account/?idAccount="+saldoAccount below //
-    QNetworkRequest request(QUrl("http://192.168.64.3/dashboard/RestApi/index.php/api/book/book/"));
+
+    QNetworkRequest request(QUrl("http://www.students.oamk.fi/~t9auai00/pankki/ci_restapi-master/ci_restapi-master/index.php/api/Account/Account/?id="+SaldoAccount));
         request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
                                                                                     //Authenticate
         QString username="admin";
@@ -51,38 +56,25 @@ void SaldoForm::on_btnShowSaldo_clicked()
         QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
         QJsonArray jsarr = json_doc.array();
 
-        // QString Account;
 
-        QString saldo, credit, creditLimit;
+        QString credit;
+
 
         foreach(const QJsonValue &value, jsarr){
 
-          // QJsonObject acnt = value.toObject();
-         //  Account+=   acnt["Creditlimit"].toString()      +", "
-               //    +   acnt["Balance"]    .toString()      +"\r";
-
 
             QJsonObject creditsum = value.toObject();
-            credit+= creditsum["name"].toString() +"  |  ";
-
-            QJsonObject info = value.toObject();
-            saldo+= info["isbn"].toString() +"  | ";
-
+            credit+=                                        + "| Balance : "
+                        +creditsum["Balance"].toString()    + "(€) |" "\n | Credit Limit : "
+                        +creditsum["CreditLimit"].toString()+ "(€) |";
 
 
-           MySingleton *cardtype = MySingleton::getInstance(); //check cardID (Debit / Credit)
-           SaldoAccount= cardtype->getAccountID();
-
-           if(SaldoAccount == "1") //credit
-           {
-               ui->labelSaldo->setText("Credit Side "+credit); //<----(Account) here
-           }
-           if(SaldoAccount == "2") //debit
-           {
-               ui->labelSaldo->setText("Debit Side "+saldo);
-           }
 
 
+        }
+        if(SaldoAccount == "222");
+        {
+            ui->labelSaldo->setText(" "+credit); //<----(Account) here
 
         }
 

@@ -79,9 +79,17 @@ void MenuPage::on_btnCardID_clicked()   //Check CardID
     QString DorC;
     MySingleton *cardtype = MySingleton::getInstance(); //move cardID
 
-    DorC=cardtype->getAccountID();
+    DorC=cardtype->getCardtype();
 
-    ui->labelResult->setText("Kortti Käytössä : "+DorC);
+    if(DorC == "1"){
+        ui->labelResult->setText("Kortti Käytössä : Credit ");
+
+    }
+    if(DorC == "2"){
+        ui->labelResult->setText("Kortti Käytössä : Debit");
+
+    }
+
 
 }
 

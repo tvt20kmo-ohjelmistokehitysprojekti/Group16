@@ -18,7 +18,9 @@ SiirtoForm::~SiirtoForm()
 
 void SiirtoForm::on_btnVahvistaSiirto_clicked()
 {
-
+    this->close();
+    MenuPage *mpp= new MenuPage();
+    mpp->show();
 }
 
 void SiirtoForm::on_btnStop_clicked()

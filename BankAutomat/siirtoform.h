@@ -16,7 +16,6 @@ public:
     ~SiirtoForm();
 
 private slots:
-    void on_btnSiirto_clicked();
 
     void on_btnVahvistaSiirto_clicked();
 
