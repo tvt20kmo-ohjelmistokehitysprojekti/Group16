@@ -1,6 +1,7 @@
 #include "menupage.h"
 #include "debitorcredit.h"
 
+
 #include "mainwindow.h"
 #include "mysingleton.h"
 
@@ -34,8 +35,7 @@ void MainWindow::on_btnSignIn_clicked() // Login system not progressing
     loginPassword=ui->lineEditPin->text();
 
 
-
-    QNetworkRequest request(QUrl("http://www.students.oamk.fi/~t9auai00/pankki/ci_restapi-master/ci_restapi-master/index.php/api/Card/Card"));
+    QNetworkRequest request(QUrl("http://www.students.oamk.fi/~t9auai00/pankki/ci_restapi-master/ci_restapi-master/index.php/api/login?idCard="+loginCardID+"&Password="+loginPassword));
         request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");       //correct url above needed !
 
         QString username="admin";        //Authenticate
@@ -59,6 +59,7 @@ void MainWindow::on_btnSignIn_clicked() // Login system not progressing
 
            qDebug()<<"DATA: "+response_data;
 
+           ui->labelResult->setText(response_data);
 
 
            reply->deleteLater();
@@ -98,7 +99,7 @@ void MainWindow::on_btnSignIn_clicked() // Login system not progressing
                 QJsonObject info = value.toObject();
                 creditcheck+= info["isbn"].toString() +"  | ";
 
-                ui->labelShowMe->setText("Hey"+creditcheck);
+                ui->labelSignIn->setText("Hey"+creditcheck);
 
                 rep->deleteLater();
             }
@@ -106,8 +107,8 @@ void MainWindow::on_btnSignIn_clicked() // Login system not progressing
 
             //move to password right
 
-    if(loginCardID == loginPassword){
-            //response_data.compare("true")==0//
+    if(response_data.compare("true")==0){
+
 
         ui->labelSignIn->setText("Right");
         DebitorCredit *doc= new DebitorCredit();

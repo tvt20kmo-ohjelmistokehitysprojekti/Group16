@@ -34,7 +34,7 @@ void TapahtumatForm::on_btnShowTapahtumat_clicked()
     TapahtumaTili=cardtype->getCardtype();
 
 
-       QNetworkRequest requestTapahtumat(QUrl("http://192.168.64.3/dashboard/RestApi/index.php/api/book/book/"));
+       QNetworkRequest requestTapahtumat(QUrl("http://www.students.oamk.fi/~t9auai00/pankki/ci_restapi-master/ci_restapi-master/index.php/api/tapahtumat/?id=111"));
         requestTapahtumat.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
                                          //Authenticate
         QString username="admin";
@@ -76,10 +76,10 @@ void TapahtumatForm::on_btnShowTapahtumat_clicked()
                     ui->textEditTapahtumat->setText("Debit side history "+events); //Debit tapahtumat
                  }
 
-                 else
-                 {
-                     ui->textEditTapahtumat->setText("Virhe sattui. Yritä uudelleen");
-                 }
+                     else
+                     {
+                         ui->textEditTapahtumat->setText("Virhe sattui. Yritä uudelleen");
+                     }
 
 
 
