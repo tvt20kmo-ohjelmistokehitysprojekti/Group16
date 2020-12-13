@@ -68,18 +68,23 @@ void TapahtumatForm::on_btnShowTapahtumat_clicked()
 
               if(TapahtumaTili == "1")
               {
-
                 ui->textEditTapahtumat->setText("Credit side history "+events); //Credit tapahtumat
               }
-              if(TapahtumaTili == "2")
-              {
-                  ui->textEditTapahtumat->setText("Debit side history "+events); //Debit tapahtumat
-              }
 
-reply->deleteLater();
+                 else if(TapahtumaTili == "2")
+                 {
+                    ui->textEditTapahtumat->setText("Debit side history "+events); //Debit tapahtumat
+                 }
+
+                 else
+                 {
+                     ui->textEditTapahtumat->setText("Virhe sattui. Yritä uudelleen");
+                 }
 
 
 
+
+              reply->deleteLater();
 
 
 }

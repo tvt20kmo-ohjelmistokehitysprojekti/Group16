@@ -25,14 +25,17 @@ SaldoForm::~SaldoForm()
 
 void SaldoForm::on_btnShowSaldo_clicked()
 {
-    QString SaldoAccount, credit, debit;
+    QString SaldoAccount, credit, debit, Card;
 
-    MySingleton *cardtype = MySingleton::getInstance(); //move cardID
+
+    MySingleton *cardtype = MySingleton::getInstance(); //Account ID for Saldo
 
     SaldoAccount=cardtype->getAccountID();
 
 
+    MySingleton *kortti = MySingleton::getInstance(); //Card Type for Saldo
 
+    Card=kortti->getCardtype();
 
     QNetworkRequest request(QUrl("http://www.students.oamk.fi/~t9auai00/pankki/ci_restapi-master/ci_restapi-master/index.php/api/Account/Account/?id="+SaldoAccount));
         request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
@@ -76,14 +79,19 @@ void SaldoForm::on_btnShowSaldo_clicked()
 
 
         }
-        if(SaldoAccount > "200")
+        if(SaldoAccount > "200" && Card =="1") // Over 200 = Credit type card
         {
             ui->labelSaldo->setText(" "+credit); // Show Credit side Balance
 
         }
-        if(SaldoAccount < "200")
+
+        if(SaldoAccount < "200" && Card =="2") // Under 200 = Debit type card
         {
             ui->labelSaldo->setText(" "+debit); // Show Debit side balance
+        }
+        else if(SaldoAccount > "200" && Card== "2") // Show Credit User (Debit) as chosen side
+        {
+            ui->labelSaldo->setText(" "+debit);
         }
 
         reply->deleteLater();
