@@ -17,7 +17,7 @@ require APPPATH . 'libraries/REST_Controller.php';
  * @license         MIT
  * @link            https://github.com/chriskacerguis/codeigniter-restserver
  **/
-class Account extends REST_Controller {
+class Tapahtumat extends REST_Controller {
 
     function __construct()
     {
@@ -27,8 +27,12 @@ class Account extends REST_Controller {
         // Construct the parent class
         parent::__construct();
 
-        $this->load->model('Account_model');
-    }function tapahtumat_get()
+        $this->load->model('Tapahtumat_model');
+    }
+
+   
+
+   function index_get()
     {
         // Account from a data store e.g. database  
 
@@ -37,12 +41,12 @@ class Account extends REST_Controller {
         // If the id parameter doesn't exist return all Accounts
         if ($id === NULL)
         {
-            $Account=$this->Account_model->tapahtumat(NULL);
+            $Tapahtumat=$this->Tapahtumat_model->get_Tapahtumat(NULL);
             // Check if the Account data store contains Account (in case the database result returns NULL)
-            if ($Account)
+            if ($Tapahtumat)
             {
                 // Set the response and exit
-                $this->response($Account, REST_Controller::HTTP_OK); // OK (200) being the HTTP response code
+                $this->response($Tapahtumat, REST_Controller::HTTP_OK); // OK (200) being the HTTP response code
             }
             else
             {
@@ -64,10 +68,10 @@ class Account extends REST_Controller {
             }
 
             // Get the Account from the database, using the id as key for retrieval.
-            $Account=$this->Account_model->tapahtumat($id);
-            if (!empty($Account))
+            $Tapahtumat=$this->Tapahtumat_model->get_Tapahtumat($id);
+            if (!empty($Tapahtumat))
             {
-                $this->set_response($Account, REST_Controller::HTTP_OK); // OK (200) being the HTTP response code
+                $this->set_response($Tapahtumat, REST_Controller::HTTP_OK); // OK (200) being the HTTP response code
             }
             else
             {
@@ -79,3 +83,4 @@ class Account extends REST_Controller {
         }
 
     }
+}

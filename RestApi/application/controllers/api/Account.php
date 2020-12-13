@@ -30,21 +30,6 @@ class Account extends REST_Controller {
         $this->load->model('Account_model');
     }
 
-   function Saldo_get()  
-    {
-        $idAccount = $this->post('idAccount');
-
-        $message=$this->Account_model->Saldo($idAccount);  
-        if(!$message){
-            $this->response([
-                'status' => FALSE,
-                'message' => 'Bad Reguest'
-                ], REST_Controller::HTTP_BAD_REQUEST);
-        }
-        else{
-            $this->response($message, REST_Controller::HTTP_OK);
-        }    
-	}
 function otto_post()
 
 {
