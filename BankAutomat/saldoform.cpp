@@ -25,7 +25,7 @@ SaldoForm::~SaldoForm()
 
 void SaldoForm::on_btnShowSaldo_clicked()
 {
-    QString SaldoAccount;
+    QString SaldoAccount, credit, debit;
 
     MySingleton *cardtype = MySingleton::getInstance(); //move cardID
 
@@ -57,7 +57,7 @@ void SaldoForm::on_btnShowSaldo_clicked()
         QJsonArray jsarr = json_doc.array();
 
 
-        QString credit;
+
 
 
         foreach(const QJsonValue &value, jsarr){
@@ -68,14 +68,22 @@ void SaldoForm::on_btnShowSaldo_clicked()
                         +creditsum["Balance"].toString()    + "(€) |" "\n | Credit Limit : "
                         +creditsum["CreditLimit"].toString()+ "(€) |";
 
+            QJsonObject debitsum = value.toObject();
+            debit+=                                        + "| Balance : "
+                        +debitsum["Balance"].toString()    + " (€) |" ;
+
 
 
 
         }
-        if(SaldoAccount == "222");
+        if(SaldoAccount > "200")
         {
-            ui->labelSaldo->setText(" "+credit); //<----(Account) here
+            ui->labelSaldo->setText(" "+credit); // Show Credit side Balance
 
+        }
+        if(SaldoAccount < "200")
+        {
+            ui->labelSaldo->setText(" "+debit); // Show Debit side balance
         }
 
         reply->deleteLater();

@@ -1,6 +1,7 @@
 #include "nostoform.h"
 #include "ui_nostoform.h"
 #include "menupage.h"
+#include "mysingleton.h"
 #include <QByteArray>
 #include <QJsonArray>
 #include <QJsonDocument>
@@ -77,9 +78,16 @@ void NostoForm::on_btn100euroa_clicked()
 
 void NostoForm::on_btnVahvista_clicked()
 {
+    QString SaldoAccount;
+
+    MySingleton *cardtype = MySingleton::getInstance(); //move cardID
+
+    SaldoAccount=cardtype->getAccountID();
+
+
                                      //Check reply to balance query & compare if can withdraw
 
-    QNetworkRequest request(QUrl("http://192.168.64.3/dashboard/RestApi/index.php/api/book/book/"));
+    QNetworkRequest request(QUrl("http://www.students.oamk.fi/~t9auai00/pankki/ci_restapi-master/ci_restapi-master/index.php/api/account/otto?id="+SaldoAccount));
         request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
         //Authenticate
         QString username="admin";
@@ -108,15 +116,9 @@ void NostoForm::on_btnVahvista_clicked()
 
         foreach(const QJsonValue &value, jsarr){
             QJsonObject test = value.toObject();
-            tester+= test["name"].toString()                   +", "
-                    +test["Date"].toString()                   +",\r ";
-//        foreach(const QJsonValue &value, jsarr){
-//            QJsonObject info = value.toObject();
-//            nosto+= info["idAccount"].toString()    +", "
-//                    +info["TYPE"].toString()        +", "
-//                    +info["CreditLimit"].toString() +", "
-//                    +info["Balance"].toString()     +"\r";
-
+            tester+= test["idAccount"].toString()              +"|\r  "
+                    +test["Type"].toString()                   +"| \r "
+                    +test["Balance"].toString()                +"| \r ";
 
            ui->labelNostoStatus->setText(tester);
 

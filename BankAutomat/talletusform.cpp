@@ -27,7 +27,7 @@ void TalletusForm::on_lineEditSiirtoSumma_textChanged(const QString &arg1) //Sho
 
     talletusSum= ui->lineEditSiirtoSumma->text();
 
-     ui->labelInfo->setText("Talletus summa: "+talletusSum+" €");
+     ui->labelInfo->setText("Talletus summa: "+talletusSum+" (€)");
 
 
 

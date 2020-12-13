@@ -15,5 +15,5 @@ SignOutForm::~SignOutForm()
 
 void SignOutForm::on_btnSulje_clicked()
 {
-    close();
+    this->close();
 }

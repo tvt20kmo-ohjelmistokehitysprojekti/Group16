@@ -12,7 +12,7 @@
 #include <QString>
 
 
-QString cardchoice, Cardtype;
+QString cardchoice, account;
 
 DebitorCredit::DebitorCredit(QWidget *parent) :
     QWidget(parent),
@@ -31,14 +31,14 @@ void DebitorCredit::on_btnTili_clicked()
 
     MySingleton *cardtype = MySingleton::getInstance();             //move cardID
 
-    Cardtype =cardtype->getAccountID();
+    account =cardtype->getAccountID();
 
-    if(Cardtype <= "300")                         //CardID under 1000
+    if(account <= "300")                                         //CardID under 1000
     {
     ui->btnValitseDebit->setEnabled(true); }
 
-     if(Cardtype >= "200")                      // cardID under 10
-    {                                              //Credit side account //++missing check availability of creditlimit = if available -- enabled
+     if(account >= "200")                                       // cardID under 10
+    {                                            //Credit side account //++missing check availability of creditlimit = if available -- enabled
 
     ui->btnValitseCredit->setEnabled(true);}
 

@@ -31,7 +31,7 @@ void TapahtumatForm::on_btnShowTapahtumat_clicked()
 
     MySingleton *cardtype = MySingleton::getInstance(); //move cardID
 
-    TapahtumaTili=cardtype->getAccountID();
+    TapahtumaTili=cardtype->getCardtype();
 
 
        QNetworkRequest requestTapahtumat(QUrl("http://192.168.64.3/dashboard/RestApi/index.php/api/book/book/"));
@@ -57,32 +57,23 @@ void TapahtumatForm::on_btnShowTapahtumat_clicked()
         QJsonObject jsobj = json_doc.object();
         QJsonArray jsarr = json_doc.array();
 
-        QString Name;                                        //Testings QString name from Book table. APPLY USER DATA !
+        QString events;
+
         foreach(const QJsonValue &value, jsarr){
            QJsonObject event = value.toObject();
-           Name+=event["name"].toString()   +"|  \b |"
-                 +event["author"].toString()+"|  \b |"
-                 +event["isbn"].toString()  +"|  \n |";}
-
-           QString Author;                                                     //Testings
-           foreach(const QJsonValue &value, jsarr){
-              QJsonObject event = value.toObject();
-              Author+= event["author"].toString()    +"\r ";}
-
-              QString book_id;                                                //Testings
-              foreach(const QJsonValue &value, jsarr){
-                 QJsonObject event = value.toObject();
-                 book_id+= event["book_id"].toString()    +"\r ";}
+           events+=event["Date"].toString()   +"|  \b |"
+                 +event["Balance"].toString()+"|  \b |"
+                 +event["idHappenings"].toString()  +"|  \n |";}
 
 
               if(TapahtumaTili == "1")
               {
 
-                ui->textEditTapahtumat->setText("Credit side history "+Author); //Credit tapahtumat
+                ui->textEditTapahtumat->setText("Credit side history "+events); //Credit tapahtumat
               }
               if(TapahtumaTili == "2")
               {
-                  ui->textEditTapahtumat->setText("Debit side history "+Name); //Debit tapahtumat
+                  ui->textEditTapahtumat->setText("Debit side history "+events); //Debit tapahtumat
               }
 
 reply->deleteLater();

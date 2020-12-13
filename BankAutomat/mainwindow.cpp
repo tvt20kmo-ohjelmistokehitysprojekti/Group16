@@ -35,7 +35,7 @@ void MainWindow::on_btnSignIn_clicked() // Login system not progressing
 
 
 
-    QNetworkRequest request(QUrl("http://192.168.64.3/dashboard/RestApi/index.php/api/book/book/"));
+    QNetworkRequest request(QUrl("http://www.students.oamk.fi/~t9auai00/pankki/ci_restapi-master/ci_restapi-master/index.php/api/Card/Card"));
         request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");       //correct url above needed !
 
         QString username="admin";        //Authenticate
