@@ -1,4 +1,5 @@
 #include "nostoform.h"
+
 #include "ui_nostoform.h"
 #include "menupage.h"
 #include "mysingleton.h"
@@ -94,8 +95,7 @@ void NostoForm::on_btnVahvista_clicked()
         SaldoAccount = "111";
     }
 
-
-                                     //Check reply to balance query & compare if can withdraw
+                         //Check reply to balance query & compare if can withdraw
 
     QNetworkRequest request(QUrl("http://www.students.oamk.fi/~t9auai00/pankki/ci_restapi-master/ci_restapi-master/index.php/api/account/otto?id="+SaldoAccount));
         request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
@@ -121,18 +121,16 @@ void NostoForm::on_btnVahvista_clicked()
 
 
 
-        QJsonObject json;
-                json.insert("idAccount", SaldoAccount);
-                json.insert("Balance", nostosumma);
 
 
 
 
-    QString tester;
+ QString tester;
 
         foreach(const QJsonValue &value, jsarr){
             QJsonObject test = value.toObject();
-            tester+=  test["Balance"].toString();
+            tester+= test["Balance"].toString();
+
 
             if(nostosumma >= tester) {
                 ui->labelNostoStatus->setText("Kate ei riitä! ");
@@ -143,11 +141,12 @@ void NostoForm::on_btnVahvista_clicked()
 
             Balance = tester.toFloat() - nostosumma.toFloat();
 
-
+            QJsonObject jsona;
+            jsona.insert("Balance", nostosumma);
            ui->labelNostoStatus->setNum(Balance);
+
+
             }
-
-
 
         }
 

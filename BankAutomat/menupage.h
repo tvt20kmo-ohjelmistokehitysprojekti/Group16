@@ -27,7 +27,6 @@ private slots:
 
     void on_btnOpenTalletus_clicked();
 
-    void on_btnCardID_clicked();
 
     void on_btnOpenSiirto_clicked();
 

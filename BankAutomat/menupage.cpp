@@ -75,24 +75,6 @@ void MenuPage::on_btnCloseMenuPage_clicked() //Close Menu
 
 }
 
-void MenuPage::on_btnCardID_clicked()   //Check CardID
-{
-    QString DorC;
-    MySingleton *cardtype = MySingleton::getInstance();
-
-    DorC=cardtype->getCardtype();
-
-    if(DorC == "1"){
-        ui->labelResult->setText("Kortti Käytössä : Credit ");
-
-    }
-    if(DorC == "2"){
-        ui->labelResult->setText("Kortti Käytössä : Debit");
-
-    }
-
-
-}
 
 void MenuPage::on_btnOpenSiirto_clicked()
 {
