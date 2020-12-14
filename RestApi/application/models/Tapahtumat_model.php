@@ -15,6 +15,7 @@ class Tapahtumat_model extends CI_model
     }
     return $this->db->get()->result_array();
   }
+<<<<<<< Updated upstream
   function get_tapahtuma($id)
 	{
       $call="call tapahtumat(?)";
@@ -28,4 +29,6 @@ class Tapahtumat_model extends CI_model
         }  
 	}
 
+=======
+>>>>>>> Stashed changes
 }
