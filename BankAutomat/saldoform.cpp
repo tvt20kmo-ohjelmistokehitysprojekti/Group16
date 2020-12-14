@@ -25,7 +25,7 @@ SaldoForm::~SaldoForm()
 
 void SaldoForm::on_btnShowSaldo_clicked()
 {
-    QString SaldoAccount, debit, Card, creditlimiter, credit, creditleft, Balance;
+    QString SaldoAccount, Balance;
 
 
 MySingleton *cardtype = MySingleton::getInstance(); //Account ID for Saldo
@@ -67,11 +67,7 @@ MySingleton *cardtype = MySingleton::getInstance(); //Account ID for Saldo
 
 
             QJsonObject sums = value.toObject();
-            Balance+=                                   "| Balance : "
-                      +sums["saldo"].toString()
-                                                    + " (€) |" ;
-
-            }
+            Balance+= "| Balance : " + sums["saldo"].toString() + " (€) |" ; }
 
 
         ui->labelSaldo->setText(Balance);

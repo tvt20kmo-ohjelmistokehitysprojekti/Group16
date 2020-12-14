@@ -76,6 +76,11 @@ void NostoForm::on_btn100euroa_clicked()
     nostosumma = "100 ";
 }
 
+void NostoForm::on_lineEditMuuSumma_textChanged(const QString &arg1)
+{
+    nostosumma= ui->lineEditMuuSumma->text();
+}
+
 void NostoForm::on_btnVahvista_clicked()
 {
     QString SaldoAccount;
@@ -116,24 +121,31 @@ void NostoForm::on_btnVahvista_clicked()
 
 
 
+        QJsonObject json;
+                json.insert("idAccount", SaldoAccount);
+                json.insert("Balance", nostosumma);
+
+
+
+
     QString tester;
 
         foreach(const QJsonValue &value, jsarr){
             QJsonObject test = value.toObject();
             tester+=  test["Balance"].toString();
 
-            if(nostosumma > tester) {
+            if(nostosumma >= tester) {
                 ui->labelNostoStatus->setText("Kate ei riitä! ");
-            }
 
-    float Balance;
+            }
+            else{
+            float Balance;
 
             Balance = tester.toFloat() - nostosumma.toFloat();
 
 
            ui->labelNostoStatus->setNum(Balance);
-
-
+            }
 
 
 
@@ -150,4 +162,5 @@ void NostoForm::on_btnStop_clicked()                           //close Nosto + O
 
 
 }
+
 

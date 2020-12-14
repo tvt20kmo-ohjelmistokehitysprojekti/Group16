@@ -32,6 +32,8 @@ private slots:
 
     void on_btn100euroa_clicked();
 
+    void on_lineEditMuuSumma_textChanged(const QString &arg1);
+
 private:
     Ui::NostoForm *ui;
 };

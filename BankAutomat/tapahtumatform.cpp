@@ -27,14 +27,17 @@ TapahtumatForm::~TapahtumatForm()
 
 void TapahtumatForm::on_btnShowTapahtumat_clicked()
 {
-  QString TapahtumaTili, Korttivalinta;
+  QString TapahtumaTili;
 
-    MySingleton *account = MySingleton::getInstance(); //move cardID
 
-    MySingleton *cardtype = MySingleton::getInstance();
+  MySingleton *cardtype = MySingleton::getInstance(); //Account ID for Tapahtumat
 
-    TapahtumaTili=account->getAccountID();
-    Korttivalinta = cardtype->getCardtype();
+           TapahtumaTili=cardtype->getAccountID();
+
+          if(TapahtumaTili == "440")
+          {
+              TapahtumaTili = "111";
+          }
 
 
        QNetworkRequest requestTapahtumat(QUrl("http://www.students.oamk.fi/~t9auai00/pankki/ci_restapi-master/ci_restapi-master/index.php/api/tapahtumat/?id="+TapahtumaTili));
@@ -64,25 +67,11 @@ void TapahtumatForm::on_btnShowTapahtumat_clicked()
 
         foreach(const QJsonValue &value, jsarr){
            QJsonObject event = value.toObject();
-           events+=event["Date"].toString()         +"|  \b "
+           events+=event["Date"].toString()         +"|  "
                  +event["Balance"].toString()       +"|  \n ";}
 
 
-              if(Korttivalinta == "1")
-              {
-                ui->textEditTapahtumat->setText("  \n "+events); //Credit tapahtumat
-              }
-
-                 else if(Korttivalinta == "2")
-                 {
-                    ui->textEditTapahtumat->setText(" \n "+events); //Debit tapahtumat
-                 }
-
-                     else
-                     {
-                         ui->textEditTapahtumat->setText("Virhe sattui. Yritä uudelleen");
-                     }
-
+                ui->textEditTapahtumat->setText("  \n "+events); // tapahtumat
 
 
 

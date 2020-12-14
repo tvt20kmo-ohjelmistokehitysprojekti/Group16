@@ -89,16 +89,16 @@
   <widget class="QLabel" name="labelTalletusTilille">
    <property name="geometry">
     <rect>
-     <x>50</x>
+     <x>30</x>
      <y>140</y>
-     <width>191</width>
-     <height>111</height>
+     <width>241</width>
+     <height>131</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>Avenir Next</family>
-     <pointsize>17</pointsize>
+     <pointsize>15</pointsize>
     </font>
    </property>
    <property name="text">
@@ -108,17 +108,26 @@
     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
    </property>
   </widget>
-  <widget class="QLabel" name="labelInfo">
+  <widget class="QLabel" name="labelTalletusend">
    <property name="geometry">
     <rect>
-     <x>320</x>
+     <x>220</x>
      <y>140</y>
-     <width>221</width>
-     <height>21</height>
+     <width>121</width>
+     <height>131</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Avenir Next</family>
+     <pointsize>17</pointsize>
+    </font>
    </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
    </property>
   </widget>
  </widget>

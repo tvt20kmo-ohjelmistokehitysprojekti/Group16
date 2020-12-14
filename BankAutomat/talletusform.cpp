@@ -2,11 +2,12 @@
 #include "talletusform.h"
 #include "ui_talletusform.h"
 #include "menupage.h"
-
 #include <QtNetwork>
 #include <QNetworkAccessManager>
 #include <QJsonDocument>
 #include <qjsondocument.h>
+
+QString talletusSum, typeCheck;
 
     TalletusForm::TalletusForm(QWidget *parent) :
         QWidget(parent),
@@ -20,34 +21,31 @@
         delete ui;
     }
 
+
+
 void TalletusForm::on_lineEditSiirtoSumma_textChanged(const QString &arg1) //Show talletus sum when editing Sum.
 {
 
-    QString talletusSum, typeCheck;
+
 
     talletusSum= ui->lineEditSiirtoSumma->text();
 
-     ui->labelInfo->setText("Talletus summa: "+talletusSum+" (€)");
+     ui->labelTalletusend->setText("Talletus summa: "+talletusSum+" (€)");
 
 
 
-     MySingleton *cardtype = MySingleton::getInstance(); //check cardID (Debit / Credit)
+     MySingleton *cardtype = MySingleton::getInstance(); //check cardID
      typeCheck= cardtype->getAccountID();
 
-     if(typeCheck == "1") //credit chosen
-     {
-         ui->labelTalletusTilille->setText("Credit tilille talletus:\n" +talletusSum+" (€) \n \n Vahvista talletus"); //<----(Account) here
+
+         ui->labelTalletusTilille->setText("tilille talletus: "+talletusSum+ " (€)  \n Vahvista talletus");
      }
-     if(typeCheck == "2") //debit chosen
-     {
-         ui->labelTalletusTilille->setText("Debit tilille talletus:\n "+talletusSum+ " (€) \n \n Vahvista talletus");
-     }
-}
+
 
 void TalletusForm::on_btnVahvistaTalletus_clicked()
 {
 
-    QNetworkRequest request(QUrl("http://192.168.64.3/dashboard/RestApi/index.php/api/book/book/"));
+    QNetworkRequest request(QUrl("http://www.students.oamk.fi/~t9auai00/pankki/ci_restapi-master/ci_restapi-master/index.php/api/account/otto"+typeCheck));
         request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
         //Authenticate
         QString username="admin";
@@ -74,13 +72,24 @@ void TalletusForm::on_btnVahvistaTalletus_clicked()
 
         foreach(const QJsonValue &value, jsarr){
            QJsonObject talletus = value.toObject();
-           BalanceSum+=talletus["idAccount"].toString()    +", "
-                   +talletus["Creditlimit"].toString()  +", "
-                   +talletus["Balance"].toString()      +"\r";
+           BalanceSum+= talletus["Balance"].toString();
 
 
 
-        }
+                           float Balance;
+
+                           Balance = BalanceSum.toFloat() + talletusSum.toFloat();
+
+
+
+           ui->labelTalletusTilille->setText("Talletus Onnistui !");
+           ui->labelTalletusend->setNum(Balance);
+
+}
+
+
+
+
 
         reply->deleteLater();
 
