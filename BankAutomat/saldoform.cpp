@@ -32,10 +32,10 @@ MySingleton *cardtype = MySingleton::getInstance(); //Account ID for Saldo
 
          SaldoAccount=cardtype->getAccountID();
 
-
-  MySingleton *kortti = MySingleton::getInstance(); //Card Type for Saldo
-
-            Card=kortti->getCardtype();
+        if(SaldoAccount == "440")
+        {
+            SaldoAccount = "111";
+        }
 
     QNetworkRequest request(QUrl("http://www.students.oamk.fi/~t9auai00/pankki/ci_restapi-master/ci_restapi-master/index.php/api/saldo/?id="+SaldoAccount));
         request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
@@ -65,21 +65,13 @@ MySingleton *cardtype = MySingleton::getInstance(); //Account ID for Saldo
         foreach(const QJsonValue &value, jsarr){
 
 
-            QJsonObject creditsum = value.toObject();
-            credit+=                                        + "| Balance : "
-                        +creditsum["Balance"].toString()    + "(€) |" "\n | Credit Limit : "
-                        +creditsum["CreditLimit"].toString()+ "(€) |";
-
-            QJsonObject creditlimits = value.toObject();
-            creditlimiter+=creditlimits["CreditLimit"].toString()+"| Creditlimit | ";
-
 
             QJsonObject sums = value.toObject();
             Balance+=                                   "| Balance : "
                       +sums["saldo"].toString()
                                                     + " (€) |" ;
 
-}
+            }
 
 
         ui->labelSaldo->setText(Balance);
@@ -87,7 +79,7 @@ MySingleton *cardtype = MySingleton::getInstance(); //Account ID for Saldo
 
         reply->deleteLater();
 
-}
+            }
 
 
 void SaldoForm::on_btnSulje_clicked()

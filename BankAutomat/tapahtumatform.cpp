@@ -27,14 +27,17 @@ TapahtumatForm::~TapahtumatForm()
 
 void TapahtumatForm::on_btnShowTapahtumat_clicked()
 {
-  QString TapahtumaTili;
+  QString TapahtumaTili, Korttivalinta;
 
-    MySingleton *cardtype = MySingleton::getInstance(); //move cardID
+    MySingleton *account = MySingleton::getInstance(); //move cardID
 
-    TapahtumaTili=cardtype->getCardtype();
+    MySingleton *cardtype = MySingleton::getInstance();
+
+    TapahtumaTili=account->getAccountID();
+    Korttivalinta = cardtype->getCardtype();
 
 
-       QNetworkRequest requestTapahtumat(QUrl("http://www.students.oamk.fi/~t9auai00/pankki/ci_restapi-master/ci_restapi-master/index.php/api/tapahtumat/?id=111"));
+       QNetworkRequest requestTapahtumat(QUrl("http://www.students.oamk.fi/~t9auai00/pankki/ci_restapi-master/ci_restapi-master/index.php/api/tapahtumat/?id="+TapahtumaTili));
         requestTapahtumat.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
                                          //Authenticate
         QString username="admin";
@@ -61,19 +64,18 @@ void TapahtumatForm::on_btnShowTapahtumat_clicked()
 
         foreach(const QJsonValue &value, jsarr){
            QJsonObject event = value.toObject();
-           events+=event["Date"].toString()   +"|  \b |"
-                 +event["Balance"].toString()+"|  \b |"
-                 +event["idHappenings"].toString()  +"|  \n |";}
+           events+=event["Date"].toString()         +"|  \b "
+                 +event["Balance"].toString()       +"|  \n ";}
 
 
-              if(TapahtumaTili == "1")
+              if(Korttivalinta == "1")
               {
-                ui->textEditTapahtumat->setText("Credit side history "+events); //Credit tapahtumat
+                ui->textEditTapahtumat->setText("  \n "+events); //Credit tapahtumat
               }
 
-                 else if(TapahtumaTili == "2")
+                 else if(Korttivalinta == "2")
                  {
-                    ui->textEditTapahtumat->setText("Debit side history "+events); //Debit tapahtumat
+                    ui->textEditTapahtumat->setText(" \n "+events); //Debit tapahtumat
                  }
 
                      else

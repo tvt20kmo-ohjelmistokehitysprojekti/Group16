@@ -1,6 +1,4 @@
 #include "menupage.h"
-#include "debitorcredit.h"
-
 
 #include "mainwindow.h"
 #include "mysingleton.h"
@@ -25,20 +23,20 @@ MainWindow::~MainWindow()
 
 }
 
-QString loginCardID,                       //CardID also
-        loginPassword;                    //Password
+QString loginCardID,                               //CardID
+        loginPassword;                            //Password
 
-void MainWindow::on_btnSignIn_clicked() // Login system not progressing
+void MainWindow::on_btnSignIn_clicked()           // Login system
 
 {
     loginCardID=ui->lineEditUser->text();
     loginPassword=ui->lineEditPin->text();
 
 
-    QNetworkRequest request(QUrl("http://www.students.oamk.fi/~t9auai00/pankki/ci_restapi-master/ci_restapi-master/index.php/api/login?idCard="+loginCardID+"&Password="+loginPassword));
-        request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");       //correct url above needed !
+    QNetworkRequest request(QUrl("http://www.students.oamk.fi/~t9auai00/pankki/ci_restapi-master/ci_restapi-master/index.php/api/login/check_login?idCard="+loginCardID+"&password="+loginPassword));
+        request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 
-        QString username="admin";        //Authenticate
+        QString username="admin";
         QString password="1234";
         QString concatenatedCredentials = username + ":" + password;
         QByteArray data = concatenatedCredentials.toLocal8Bit().toBase64();
@@ -64,86 +62,21 @@ void MainWindow::on_btnSignIn_clicked() // Login system not progressing
 
            reply->deleteLater();
 
-        QNetworkRequest requesting(QUrl("http://192.168.64.3/dashboard/RestApi/index.php/api/book/book/"));
-            request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-                                                                                        //Authenticate
-
-            QNetworkAccessManager nami;
-            QNetworkReply *rep = nam.get(request);
-
-            while (!rep->isFinished())
-            {
-                qApp->processEvents();
-            }
-
-            QByteArray reply_data = rep->readAll();
-
-            QJsonDocument json_docs = QJsonDocument::fromJson(reply_data);
-            QJsonArray jsar = json_docs.array();
-
-
-
-
-            // QString Account;
-
-    QString creditcheck;
-
-            foreach(const QJsonValue &value, jsar){
-
-              // QJsonObject acnt = value.toObject();
-             //  Account+=   acnt["Creditlimit"].toString()      +", "
-                   //    +   acnt["Balance"]    .toString()      +"\r";
-                QJsonObject checkcredit = value.toObject();
-                creditcheck+= checkcredit["name"].toString() +"Someshit  |  ";
-
-                QJsonObject info = value.toObject();
-                creditcheck+= info["isbn"].toString() +"  | ";
-
-                ui->labelSignIn->setText("Hey"+creditcheck);
-
-                rep->deleteLater();
-            }
-
-
-            //move to password right
 
     if(response_data.compare("true")==0){
 
 
-        ui->labelSignIn->setText("Right");
-        DebitorCredit *doc= new DebitorCredit();
+        ui->labelSignIn->setText("Right");              //Login Success
+        MenuPage *doc= new MenuPage();
         doc ->show();
-        MySingleton *login = MySingleton::getInstance(); //move cardID
+        MySingleton *login = MySingleton::getInstance(); //set cardID
         //should be in ""Right"" section.
         login->setAccountID(loginCardID);
 
         this->close();
-    } else if(loginCardID != loginPassword) {
-        ui->labelSignIn->setText("Wrong");
 
-      //  ui->labelSignIn->setText("Wrong"); //for now used
+    } else if(response_data.compare("false")!=0) {      //Login failed
+        ui->labelSignIn->setText("Wrong");       }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-}
 }
 

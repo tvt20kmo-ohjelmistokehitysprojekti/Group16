@@ -2,11 +2,12 @@
 #include "saldoform.h"
 #include "nostoform.h"
 #include "ui_menupage.h"
+
 #include "tapahtumatform.h"
 #include "talletusform.h"
 #include "mysingleton.h"
-#include "debitorcredit.h"
 #include <QString>
+
 #include <signoutform.h>
 #include "siirtoform.h"
 
@@ -77,7 +78,7 @@ void MenuPage::on_btnCloseMenuPage_clicked() //Close Menu
 void MenuPage::on_btnCardID_clicked()   //Check CardID
 {
     QString DorC;
-    MySingleton *cardtype = MySingleton::getInstance(); //move cardID
+    MySingleton *cardtype = MySingleton::getInstance();
 
     DorC=cardtype->getCardtype();
 

@@ -84,6 +84,11 @@ void NostoForm::on_btnVahvista_clicked()
 
     SaldoAccount=cardtype->getAccountID();
 
+    if(SaldoAccount == "440")
+    {
+        SaldoAccount = "111";
+    }
+
 
                                      //Check reply to balance query & compare if can withdraw
 
@@ -111,16 +116,26 @@ void NostoForm::on_btnVahvista_clicked()
 
 
 
-        QString nosto;
-        QString tester;
+    QString tester;
 
         foreach(const QJsonValue &value, jsarr){
             QJsonObject test = value.toObject();
-            tester+= test["idAccount"].toString()              +"|\r  "
-                    +test["Type"].toString()                   +"| \r "
-                    +test["Balance"].toString()                +"| \r ";
+            tester+=  test["Balance"].toString();
 
-           ui->labelNostoStatus->setText(tester);
+            if(nostosumma > tester) {
+                ui->labelNostoStatus->setText("Kate ei riitä! ");
+            }
+
+    float Balance;
+
+            Balance = tester.toFloat() - nostosumma.toFloat();
+
+
+           ui->labelNostoStatus->setNum(Balance);
+
+
+
+
 
         }
 
