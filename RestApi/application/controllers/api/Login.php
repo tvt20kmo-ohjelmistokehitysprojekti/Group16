@@ -6,7 +6,7 @@ class Login extends CI_Controller {
         $this->load->model('User_model');
         $idCard=$this->input->get('idCard');
         $plaintext_password=$this->input->get('password');
-        $encrypted_password=$this->User_model->check_login($username);
+        $encrypted_password=$this->User_model->check_login($idCard);
 
         if(password_verify($plaintext_password,$encrypted_password)){
           $result=true;

@@ -30,7 +30,6 @@ class Tapahtumat extends REST_Controller {
         $this->load->model('Tapahtumat_model');
     }
 
-   
 
    function index_get()
     {

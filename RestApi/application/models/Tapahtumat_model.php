@@ -7,8 +7,9 @@ class Tapahtumat_model extends CI_model
     
   function get_Tapahtumat($id)
   {
+    $this->db->limit(5,1);
     $this->db->select('*');
-    $this->db->from('tapahtumat');
+    $this->db->from('Happenings');
     if($id !== NULL) {
       $this->db->where('idAccount',$id);
     }

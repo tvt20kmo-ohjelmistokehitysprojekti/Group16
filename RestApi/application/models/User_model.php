@@ -6,9 +6,9 @@ class User_model extends CI_model
 {
   function get_user($id){
     $this->db->select('*');
-    $this->db->from('user');
+    $this->db->from('Card');
     if($id !== NULL) {
-      $this->db->where('id_user',$id);
+      $this->db->where('idCard',$id);
     }
     return $this->db->get()->result_array();
   }
@@ -43,10 +43,10 @@ class User_model extends CI_model
     }
   }
 
-  function check_login($username){
+  function check_login($idCard){
     $this->db->select('password');
-    $this->db->from('user');
-    $this->db->where('username',$username);
+    $this->db->from('Card');
+    $this->db->where('idCard',$idCard);
     return $this->db->get()->row('password');
   }
 
